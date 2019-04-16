@@ -1,4 +1,4 @@
-package src.Product;
+//package src.Product;
 /**
  * @Kelas GoatMilk merupakan hasil dari kelas Goat
  */

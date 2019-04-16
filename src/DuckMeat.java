@@ -1,4 +1,4 @@
-package src.Product;
+//package src.Product;
 /**
  * @Kelas DuckMeat merupakan hasil dari kelas Duck
  */

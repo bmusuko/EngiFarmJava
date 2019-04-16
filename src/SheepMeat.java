@@ -1,4 +1,4 @@
-package src.Product;
+//package src.Product;
 /**
  * @Kelas SheepMeat merupakan hasil dari kelas Sheep
  */

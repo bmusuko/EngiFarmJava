@@ -1,4 +1,4 @@
-package src.Product;
+//package src.Product;
 /**
  * @Kelas DuckEgg merupakan hasil dari kelas Duck
  */

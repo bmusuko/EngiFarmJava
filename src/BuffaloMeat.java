@@ -1,4 +1,6 @@
-package src.Product;
+//package src.product.buffalomeat;
+//import src.product.abc.*;
+
 /**
  * @Class BuffaloMeat hasil dari kelas Buffalo
  */

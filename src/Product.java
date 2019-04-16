@@ -1,4 +1,4 @@
-package src.Product;
+//package src.product.abc;
 /**
  * @Kelas Product
  */
@@ -12,7 +12,6 @@ public class Product {
         /**
          * Konstruktor untuk product, meminta 2 parameter harga dan code nama
          */
-        this.code = code;
         assert (harga > 0);
         this.harga = harga; 
     }

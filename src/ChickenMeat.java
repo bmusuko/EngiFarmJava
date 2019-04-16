@@ -1,4 +1,4 @@
-package src.Product;
+//package src.Product;
 /**
  * @Kelas ChickenMeat merupakan hasil dari kelas chicken
  */

@@ -1,4 +1,4 @@
-package src.Product;
+//package src.Product;
 /**
  * @Kelas CowMeat merupakan hasil dari kelas Cow
  */
