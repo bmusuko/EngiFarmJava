@@ -7,9 +7,8 @@ import java.util.*;
 
 public class Product {
     protected int harga;
-    protected String code;
 
-    public Product(int harga, String code) {
+    public Product(int harga) {
         /**
          * Konstruktor untuk product, meminta 2 parameter harga dan code nama
          */
@@ -24,19 +23,5 @@ public class Product {
          */
 
         return this.harga;
-    }
-
-    // public void setHarga() {
-    //     /**
-    //      * Setter harga dari product
-    //      */
-    //     this.harga = harga;
-    // }
-
-    public String getCode() {
-        /**
-         * Getter untuk mendapatkan code dari product
-         */
-        return this.code;
     }
 }

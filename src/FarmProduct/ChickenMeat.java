@@ -8,6 +8,6 @@ package src.Product;
 
 public class ChickenMeat extends Product {
     public ChickenMeat() {
-        super(70000, "ChickenMeat");
+        super(70000);
     }
 }

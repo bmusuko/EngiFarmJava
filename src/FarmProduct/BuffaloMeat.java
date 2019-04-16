@@ -8,7 +8,7 @@ package src.Product;
 
 public class BuffaloMeat extends Product{
     public BuffaloMeat() {
-        super(70000,"BuffaloMeat");
+        super(70000);
     }
     
 }
