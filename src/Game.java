@@ -1,28 +1,29 @@
+import java.util.*;
 class Game{
 	public Game(){
 
 	}	
 
 	
-	public void Game::listCommand(){
-		cout << "!--- LIST COMMAND ---!"<<endl;
-		cout<<"talk up"<<endl;
-		cout<<"talk left"<<endl;
-		cout<<"talk right"<<endl;
-		cout<<"talk down"<<endl;
-		cout<<"interact up"<<endl;
-		cout<<"interact left"<<endl;
-		cout<<"interact right"<<endl;
-		cout<<"interact down"<<endl;
-		cout<<"kill up"<<endl;
-		cout<<"kill left"<<endl;
-		cout<<"kill right"<<endl;
-		cout<<"kill down"<<endl;
-		cout<<"grow"<<endl;
-		cout<<"status"<<endl;
-		cout<<"tutorial"<<endl;
-		cout<<"keterangan"<<endl;
-		cout<<"listCommand"<<endl;
-		cout<<"exit"<<endl<<endl;
+	public void listCommand(){
+		System.out.println("!--- LIST COMMAND ---!");
+		System.out.println("talk up");
+		System.out.println("talk left");
+		System.out.println("talk right");
+		System.out.println("talk down");
+		System.out.println("interact up");
+		System.out.println("interact left");
+		System.out.println("interact right");
+		System.out.println("interact down");
+		System.out.println("kill up");
+		System.out.println("kill left");
+		System.out.println("kill right");
+		System.out.println("kill down");
+		System.out.println("grow");
+		System.out.println("status");
+		System.out.println("tutorial");
+		System.out.println("keterangan");
+		System.out.println("listCommand");
+		System.out.println("exit");
 	}
 }

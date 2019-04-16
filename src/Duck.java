@@ -8,9 +8,11 @@ class Duck extends FarmAnimal implements EggProducingFarmAnimal<DuckEgg>, MeatPr
 	}
 
 	public DuckEgg respondInteract(){
-		if(super.getHasilProduct){
-			return (new DuckEgg());
+		if(super.getHasilProduct()){
 			super.setHasilProduct(false);
+			return (new DuckEgg());
+		} else {
+			return null;
 		}
 	}
 

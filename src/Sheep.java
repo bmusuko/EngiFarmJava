@@ -2,16 +2,9 @@ import java.util.*;
 
 
 
-class Sheep extends FarmAnimal implements MilkProducingFarmAnimal<SheepMilk>, MeatProducingFarmAnimal<SheepMeat>{
+class Sheep extends FarmAnimal implements MeatProducingFarmAnimal<SheepMeat>{
 	public Sheep(int x,int y){
 		super(x,y,12);
-	}
-
-	public SheepMilk respondInteract(){
-		if(super.getHasilProduct){
-			return (new SheepMilk());
-			super.setHasilProduct(false);
-		}
 	}
 
 	public SheepMeat respondKill(){

@@ -6,9 +6,11 @@ class Goat extends FarmAnimal implements EggProducingFarmAnimal<GoatMilk>, MeatP
 	}
 
 	public GoatMilk respondInteract(){
-		if(super.getHasilProduct){
-			return (new GoatMilk());
+		if(super.getHasilProduct()){
 			super.setHasilProduct(false);
+			return (new GoatMilk());
+		} else {
+			return null;
 		}
 	}
 

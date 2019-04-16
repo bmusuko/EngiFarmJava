@@ -1,6 +1,6 @@
 import java.util.*;
 
 
-interface MeatProducingFarmAnimal<T extends FarmProduct>{
+interface MeatProducingFarmAnimal<T extends Product>{
 	public T respondKill();
 }

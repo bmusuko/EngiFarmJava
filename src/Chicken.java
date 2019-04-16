@@ -8,9 +8,11 @@ class Chicken extends FarmAnimal implements EggProducingFarmAnimal<ChickenEgg>, 
 	}
 
 	public ChickenEgg respondInteract(){
-		if(super.getHasilProduct){
-			return (new ChickenEgg());
+		if(super.getHasilProduct()){
 			super.setHasilProduct(false);
+			return (new ChickenEgg());			
+		} else {
+			return null;
 		}
 	}
 
