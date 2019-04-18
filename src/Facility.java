@@ -1,14 +1,22 @@
-// import java.util.LinkedList;
+abstract class Facility extends Cell{
 
-// public interface Facility {
+    public Facility(int X, int Y){
+        super(X, Y);
+    }
 
-//     public void use(LinkedList<T> LP, int money, int water, String masukan);
+    abstract void use(Player P);
 
-//     public boolean getIsGrassExist();
+    public boolean getIsObjectExist(){
+        return false;
+    }
 
-//     public boolean getIsObjectExist();
+    public boolean getIsGrassExist(){
+        return false;
+    }
 
-//     // public void setIsGrassExist(boolean grass);
+    public void setIsObjectExist(boolean object){}
 
-//     // public void setIsObjectExist(boolean obj);
-// }
+    public void setIsGrassExist(boolean grass){}
+
+    abstract char displaySymbol();
+}

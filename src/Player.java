@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 
+import sun.jvm.hotspot.runtime.win32_amd64.Win32AMD64JavaThreadPDAccess;
+
 class Player{
     private int posisiX;
     private int posisiY;
@@ -76,11 +78,33 @@ class Player{
         this.money = money;
     }
 
-    public void interact(){
-        //tbd
+
+    //Additional method
+    public void kill(T< ? extends MeatProducingFarmAnimal> X ){
+        //masih bingung
     }
 
-    public void grow(){
-        //tbd
+    public void interact(T< ? extends MilkProducingFarmAnimal> X ){
+        //masih bingung
+    }
+
+
+    public void interact(T< ? extends EggProducingFarmAnimal> X ){
+        //masih bingung
+    }
+
+
+    public void interact(Facility F){
+        F.use(this);
+        //Entah knp gua coba kalo pakenya begini jdi bisa pass by reference ._.
+    }
+
+    public void grow(Land L){
+        if (wadahAir>0){   
+            L.setIsGrassExist(true);
+            wadahAir--;
+        }else{
+            System.out.println("Wadah air anda kosong!");
+        }
     }
 }
