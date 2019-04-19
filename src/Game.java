@@ -128,7 +128,7 @@ public class Game{
 		FarmAnimal AnimalTemp;
 		int xtemp,ytemp;
 		// cout<<"i = "<<ListFarmAnimal.size<<endl;
-		for(int i=0;i<ListFarmAnimal.size;i++){
+		for(int i=0;i<ListFarmAnimal.size();i++){
 			
 			AnimalTemp = (ListFarmAnimal.get(i));
 			xtemp = AnimalTemp.getX();
