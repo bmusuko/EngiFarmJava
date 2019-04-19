@@ -45,36 +45,36 @@ public class Mixer extends Facility {
     }
 
     public LinkedList<Product> deleteNeededPoduct(LinkedList<Product> LP, Product P1, Product P2) {
-        boolean foundP1 = true;
-        boolean foundP2 = true;
+        boolean foundP1 = true; int f1 = 0;
+        boolean foundP2 = true; int f2 = 0;
         for (int i = 0; i < LP.size(); i++) {
             if (!foundP1 && !foundP2) {
                 break;
             }
             if (LP.get(i) == P1 && foundP1) {
-                LP.remove(i);
-                foundP1 = false;
+                foundP1 = false; f1 = i;
                 continue;
             }
             if (LP.get(i) == P2 && foundP2) {
-                LP.remove(i);
-                foundP2 = false;
+                foundP2 = false; f2 = i;
                 continue;
             }
         }
+        LP.remove(LP.get(f1));
+        LP.remove(LP.get(f2));
         return LP;
     }
 
-    public LinkedList<Product> createMartabak(LinkedList<Product> LP) {
+    public void createMartabak(LinkedList<Product> LP) {
         ChickenEgg C = new ChickenEgg();
         DuckEgg D = new DuckEgg();
         Martabak MB = new Martabak();
         if (isInventAvailable(LP, C, D)) {
             LP = deleteNeededPoduct(LP, C, D);
             LP.add(MB);
-            return LP;
+            // return LP;
         } else {
-            return LP;
+            // return LP;
         }
     }
 
@@ -83,7 +83,8 @@ public class Mixer extends Facility {
         GoatMilk GM = new GoatMilk();
         Cheese C = new Cheese();
         if (isInventAvailable(LP, CM, GM)) {
-            LP = deleteNeededPoduct(LP, CM, GM);
+            LP.remove(CM);
+            LP.remove(GM);
             LP.add(C);
             return LP;
         } else {
@@ -96,8 +97,10 @@ public class Mixer extends Facility {
         CowMilk CM = new CowMilk();
         BeefRolade BM = new BeefRolade();
         if (isInventAvailable(LP, C, CM)) {
-            LP = deleteNeededPoduct(LP, C, CM);
+            LP.remove(C);
+            LP.remove(CM);
             LP.add(BM);
+
             return LP;
         } else {
             return LP;
@@ -108,14 +111,12 @@ public class Mixer extends Facility {
         System.out.println("1. Martabak 2. Cheese 3. BeefRolade");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        LinkedList<Product> p = P.getTas();
+        LinkedList<Product> p;
         if (n == 1) {
-            p = createMartabak(P.getTas());
-        }
-        else if (n==2) {
+            createMartabak(P.getTas());
+        } else if (n == 2) {
             p = createCheese(P.getTas());
-        }
-        else if (n==3) {
+        } else if (n == 3) {
             p = createBeefRolade(P.getTas());
         }
         sc.close();
