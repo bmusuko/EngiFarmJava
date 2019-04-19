@@ -1,6 +1,6 @@
 class Coop extends Land {
-    Coop(int X, int Y){
-        super(X, Y, false, false);
+    Coop(int X, int Y, boolean object, boolean grass){
+        super(X, Y, object, grass);
     }
 
     public char displaySymbol(){

@@ -1,6 +1,6 @@
 class Barn extends Land {
-    Barn(int X, int Y){
-        super(X, Y, false, false);
+    Barn(int X, int Y, boolean object, boolean grass){
+        super(X, Y, object, grass);
     }
 
     public char displaySymbol(){
