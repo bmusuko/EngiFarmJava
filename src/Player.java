@@ -78,19 +78,18 @@ class Player{
     }
 
 
-    //Additional method
-    // public void kill(< ? extends MeatProducingFarmAnimal> X ){
-    //     //masih bingung
-    // }
+    // Additional method
 
-    // public void interact(< ? extends MilkProducingFarmAnimal> X ){
-    //     //masih bingung
-    // }
+    public void interact(MilkProducingFarmAnimal<Product> animal){
+        //masih bingung
+        this.addElTas(animal.respondInteract());
+    }
 
 
-    // public void interact(< ? extends EggProducingFarmAnimal> X ){
-    //     //masih bingung
-    // }
+    public void interact(EggProducingFarmAnimal<Product> animal){
+        //masih bingung
+        this.addElTas(animal.respondInteract());
+    }
 
 
     public void interact(Facility F){
@@ -113,7 +112,7 @@ class Player{
         if (this.tas.isEmpty()){
             System.out.println("Inventory Kosong");
         }else{
-            ListIterator iter = tas.listIterator(0);
+            ListIterator<Product> iter = tas.listIterator(0);
             System.out.println("Inventory : ");
             while(iter.hasNext()){
                 System.out.println(iter.next());
