@@ -2,7 +2,7 @@ import java.util.*;
 class Game{
 	private Cell[][] peta;
 	private int tick;
-	private LinkedList<FarmAnimal> ListFarmAnimal;
+	private ArrayList<FarmAnimal> ListFarmAnimal;
 	private int n;
 	private int m;
 	private Player pemain;
@@ -56,35 +56,488 @@ class Game{
 			if(c == 'A'){
 				// Chicken C(x,y);
 				ListFarmAnimal.add(new Chicken(x,y));
-				peta[x][y]->setIsObjectExist(true);
+				peta[x][y].setIsObjectExist(true);
 			} else if (c == 'D'){
 				// Duck D(x,y);
 				ListFarmAnimal.add(new Duck(x,y));
-				peta[x][y]->setIsObjectExist(true);
+				peta[x][y].setIsObjectExist(true);
 			} else if (c == 'B'){
 				// Buffalo B(x,y);
 				ListFarmAnimal.add(new Buffalo(x,y));
-				peta[x][y]->setIsObjectExist(true);
+				peta[x][y].setIsObjectExist(true);
 			} else if (c == 'S'){
 				// Sheep S(x,y);
 				ListFarmAnimal.add(new Sheep(x,y));
-				peta[x][y]->setIsObjectExist(true);
+				peta[x][y].setIsObjectExist(true);
 			} else if (c == 'C'){
 				ListFarmAnimal.add(new Cow(x,y));
-				peta[x][y]->setIsObjectExist(true);
+				peta[x][y].setIsObjectExist(true);
 			} else if (c == 'G'){
 				// Goat G(x,y);
 				ListFarmAnimal.add(new Goat(x,y));
-				peta[x][y]->setIsObjectExist(true);
+				peta[x][y].setIsObjectExist(true);
 			} else if (c == 'P'){
-				peta[x][y]->setIsObjectExist(false);
+				peta[x][y].setIsObjectExist(false);
 				pemain.setX(x);
 				pemain.setY(y);
 			}
 		}
 	}	
 
-	
+	public void printPeta(){
+		char petaTemp[n][m];
+		petaTemp = new char[n][m];
+
+		// for(int i=0;i<n;i++){
+		// 	for(int j=0;j<m;j++){
+		// 		petaTemp[i][j] = '/';
+		// 	}
+		// }
+
+		for(int i=0;i<n;i++){
+			for(int j=0;j<m;j++){
+				// cout<<"Tipe pointer "<<i<<" "<<j<<" : "<<typeid(*peta[i][j]).name()<<endl;
+				if(peta[i][j] instanceof Grassland){
+	   				if(peta[i][j].getIsGrassExist()){
+	   					petaTemp[i][j] = '#';
+	   				} else{
+	   					petaTemp[i][j] = '-';
+	   				}
+				} else if(peta[i][j] instanceof Barn){
+					if(peta[i][j].getIsGrassExist()){
+						petaTemp[i][j] = '@';
+					} else{
+						petaTemp[i][j] = 'x';
+					}
+				} else if(peta[i][j] instanceof Coop){
+					if(peta[i][j].getIsGrassExist()){
+						petaTemp[i][j] = '*';
+					} else{
+						petaTemp[i][j] = 'o';
+					}
+				} else if(peta[i][j] instanceof Truck){
+					petaTemp[i][j] = 'T';
+				} else if(peta[i][j] instanceof Mixer){
+					petaTemp[i][j] = 'M';
+				} else if(peta[i][j] instanceof Well){
+					petaTemp[i][j] = 'W';
+				}
+			}
+		}
+		FarmAnimal AnimalTemp;
+		int xtemp,ytemp;
+		// cout<<"i = "<<ListFarmAnimal.size<<endl;
+		for(int i=0;i<ListFarmAnimal.size;i++){
+			
+			AnimalTemp = (ListFarmAnimal.get(i));
+			xtemp = AnimalTemp.getX();
+			ytemp = AnimalTemp.getY();
+
+			// cout<<"i = "<<i<<" "<<typeid(AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
+			// cout<<"i = "<<i<<" "<<typeid(&AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
+			// cout<<"i = "<<i<<" "<<typeid(*AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
+			// cout<<"i = "<<typeid(Chicken).name()<<endl;
+			
+			if(AnimalTemp instanceof Chicken){
+				petaTemp[xtemp][ytemp] = 'A';
+			} else if (AnimalTemp instanceof Duck){
+				petaTemp[xtemp][ytemp] = 'D';
+			} else if(AnimalTemp instanceof Buffalo){
+				petaTemp[xtemp][ytemp] = 'B';
+			} else if(AnimalTemp instanceof Sheep){
+				petaTemp[xtemp][ytemp] = 'S';
+			} else if(AnimalTemp instanceof Cow){
+				petaTemp[xtemp][ytemp] = 'C';
+			} else if(AnimalTemp instanceof Goat){
+				petaTemp[xtemp][ytemp] = 'G';
+			}
+			// cout<<"Samp "<<i<<endl;
+		}
+		// cout<<"Sampe 2"<<endl;
+		petaTemp[pemain.getPosisiX()][pemain.getPosisiY()] = 'P';
+		for(int i=0;i<n;i++){
+			for(int j=0;j<m;j++){
+				System.out.println((petaTemp[i][j])+" ");
+			}
+			System.out.println();
+		}
+	}
+	public void play(){
+		System.out.println("Selamat datang di Engi's Farm");
+		printPeta();
+		String input;
+		tutorial();
+		cout<<"Masukkan inputan permainan :"<<endl;;
+		Scanner in = new Scanner(System.in);
+		input = in.next();
+		bool found;
+		int xtemp,ytemp,i;
+		while(input != "exit"){
+			if (input == "move up"){
+				if(isInRange(pemain.getPosisiX()-1,pemain.getPosisiY())){
+					if(isLand(pemain.getPosisiX()-1,pemain.getPosisiY())){
+						if(!peta[pemain.getPosisiX()-1][pemain.getPosisiY()].getIsObjectExist()){
+							peta[pemain.getPosisiX()][pemain.getPosisiY()].setIsObjectExist(false);
+							peta[pemain.getPosisiX()-1][pemain.getPosisiY()].setIsObjectExist(true);
+							pemain.move(1);	
+						}
+					}
+				}
+			}else if(input == "move left"){
+				if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()-1)){
+					if(isLand(pemain.getPosisiX(),pemain.getPosisiY()-1)){
+						if(!peta[pemain.getPosisiX()][pemain.getPosisiY()-1].getIsObjectExist()){
+							peta[pemain.getPosisiX()][pemain.getPosisiY()].setIsObjectExist(false);
+							peta[pemain.getPosisiX()][pemain.getPosisiY()-1].setIsObjectExist(true);
+							pemain.move(4);
+						}
+					}
+				}
+			}else if(input == "move down"){
+				if(isInRange(pemain.getPosisiX()+1,pemain.getPosisiY())){
+					if(isLand(pemain.getPosisiX()+1,pemain.getPosisiY())){
+						if(!peta[pemain.getPosisiX()+1][pemain.getPosisiY()].getIsObjectExist()){
+							peta[pemain.getPosisiX()][pemain.getPosisiY()].setIsObjectExist(false);
+							peta[pemain.getPosisiX()+1][pemain.getPosisiY()].setIsObjectExist(true);
+							pemain.move(3);
+						}				
+					}
+				}
+			}else if(input == "move right"){
+				if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()+1)){
+					if(isLand(pemain.getPosisiX(),pemain.getPosisiY()+1)){
+						if(!peta[pemain.getPosisiX()][pemain.getPosisiY()+1].getIsObjectExist()){
+							peta[pemain.getPosisiX()][pemain.getPosisiY()].setIsObjectExist(false);
+							peta[pemain.getPosisiX()][pemain.getPosisiY()+1].setIsObjectExist(true);
+							pemain.move(2);
+						}
+					}
+				}
+			}else if(input == "talk up"){
+				if(isInRange(pemain.getPosisiX()-1,pemain.getPosisiY())){
+					if(isLand(pemain.getPosisiX()-1,pemain.getPosisiY())){
+						if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()].getIsObjectExist()){
+							found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found && i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX()-1 && ytemp==pemain.getPosisiY()){
+									AnimalTemp.suara();
+									found = true;
+								}
+								i++;
+							}
+						}
+					}
+				}
+			} else if(input == "talk left"){
+				if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()-1)){
+					if(isLand(pemain.getPosisiX(),pemain.getPosisiY()-1)){
+						if(peta[pemain.getPosisiX()][pemain.getPosisiY()-1].getIsObjectExist()){
+							found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found && i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX() && ytemp==pemain.getPosisiY()-1){
+									AnimalTemp.suara();
+									found = true;
+								}
+								i++;
+							}
+						}
+					}
+				}
+			} else if(input == "talk down"){
+				if(isInRange(pemain.getPosisiX()+1,pemain.getPosisiY())){
+					if(isLand(pemain.getPosisiX()+1,pemain.getPosisiY())){
+						if(peta[pemain.getPosisiX()+1][pemain.getPosisiY()].getIsObjectExist()){
+							found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found && i <ListFarmAnimal.size){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX()+1 && ytemp==pemain.getPosisiY()){
+									AnimalTemp.suara();
+									found = true;
+								}
+								i++;
+							}
+						}
+					}
+				}
+			} else if(input == "talk right"){
+				if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()+1)){
+					if(isLand(pemain.getPosisiX(),pemain.getPosisiY()+1)){
+						if(peta[pemain.getPosisiX()][pemain.getPosisiY()+1].getIsObjectExist()){
+							found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found && i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX() && ytemp==pemain.getPosisiY()+1){
+									AnimalTemp.suara();
+									found = true;
+								}
+								i++;
+							}
+						}
+					}
+				}
+			} else if(input == "interact up"){
+				if(isInRange(pemain.getPosisiX()-1,pemain.getPosisiY())){
+	                if(isLand(pemain.getPosisiX()-1,pemain.getPosisiY())){
+	                    if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()].getIsObjectExist()){
+	                        found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found && i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX()-1 && ytemp==pemain.getPosisiY()){
+									if(AnimalTemp.getHasilProduct()){
+	        							if (AnimalTemp instanceof EggProducingFarmAnimal || AnimalTemp instanceof MilkProducingFarmAnimal){
+	                           	        	pemain.addElTas((AnimalTemp.respondInteract()));
+	                            		}
+	                            	    found = true;
+									}
+								}
+								i++;
+							}
+	                    }
+	                }else if (peta[pemain.getPosisiX()-1][pemain.getPosisiY()] instanceof Well){
+	                    pemain.interact(peta[pemain.getPosisiX()-1][pemain.getPosisiY()]);
+	                }else if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()] instanceof Truck){
+	                    pemain.interact(peta[pemain.getPosisiX()-1][pemain.getPosisiY()]);
+	                }else if (peta[pemain.getPosisiX()-1][pemain.getPosisiY()] instanceof Mixer){
+	                    pemain.interact(peta[pemain.getPosisiX()-1][pemain.getPosisiY()]);
+	                }
+	            }
+
+			} else if(input == "interact left"){
+				if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()-1)){
+	                if(isLand(pemain.getPosisiX(),pemain.getPosisiY()-1)){
+	                    if(peta[pemain.getPosisiX()][pemain.getPosisiY()-1].getIsObjectExist()){
+	                        found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found && i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX() && ytemp==pemain.getPosisiY()-1){
+									if(AnimalTemp.getHasilProduct()){
+	        							if (AnimalTemp instanceof EggProducingFarmAnimal || AnimalTemp instanceof MilkProducingFarmAnimal){
+	                           	        	pemain.addElTas((AnimalTemp.respondInteract()));
+	                            		}
+	                            	    found = true;
+									}
+								}
+								i++;
+							}
+	                    }
+	                }else if (peta[pemain.getPosisiX()][pemain.getPosisiY()-1] instanceof Well){
+	                    pemain.interact(peta[pemain.getPosisiX()][pemain.getPosisiY()-1]);
+	                }else if(peta[pemain.getPosisiX()][pemain.getPosisiY()-1] instanceof Truck){
+	                    pemain.interact(peta[pemain.getPosisiX()][pemain.getPosisiY()-1]);
+	                }else if (peta[pemain.getPosisiX()][pemain.getPosisiY()-1] instanceof Mixer){
+	                    pemain.interact(peta[pemain.getPosisiX()][pemain.getPosisiY()-1]);
+	                }
+	            }
+
+			} else if(input == "interact down"){
+				if(isInRange(pemain.getPosisiX()+1,pemain.getPosisiY())){
+	                if(isLand(pemain.getPosisiX()+1,pemain.getPosisiY())){
+	                    if(peta[pemain.getPosisiX()+1][pemain.getPosisiY()].getIsObjectExist()){
+	                        found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found && i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX()+1 && ytemp==pemain.getPosisiY()){
+									if(AnimalTemp.getHasilProduct()){
+	        							if (AnimalTemp instanceof EggProducingFarmAnimal || AnimalTemp instanceof MilkProducingFarmAnimal){
+	                           	        	pemain.addElTas((AnimalTemp.respondInteract()));
+	                            		}
+	                            	    found = true;
+									}
+								}
+								i++;
+							}
+	                    }
+	                }else if (peta[pemain.getPosisiX()+1][pemain.getPosisiY()] instanceof Well){
+	                    pemain.interact(peta[pemain.getPosisiX()+1][pemain.getPosisiY()]);
+	                }else if(peta[pemain.getPosisiX()+1][pemain.getPosisiY()] instanceof Truck){
+	                    pemain.interact(peta[pemain.getPosisiX()+1][pemain.getPosisiY()]);
+	                }else if (peta[pemain.getPosisiX()+1][pemain.getPosisiY()] instanceof Mixer){
+	                    pemain.interact(peta[pemain.getPosisiX()+1][pemain.getPosisiY()]);
+	                }
+	            }
+			} else if(input == "interact right"){
+				if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()+1)){
+	                if(isLand(pemain.getPosisiX(),pemain.getPosisiY()+1)){
+	                    if(peta[pemain.getPosisiX()][pemain.getPosisiY()+1].getIsObjectExist()){
+	                        found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found && i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX() && ytemp==pemain.getPosisiY()+1){
+									if(AnimalTemp.getHasilProduct()){
+	        							if (AnimalTemp instanceof EggProducingFarmAnimal || AnimalTemp instanceof MilkProducingFarmAnimal){
+	                           	        	pemain.addElTas((AnimalTemp.respondInteract()));
+	                            		}
+	                            	    found = true;
+									}
+								}
+								i++;
+							}
+	                    }
+	                }else if (peta[pemain.getPosisiX()][pemain.getPosisiY()+1] instanceof Well){
+	                    pemain.interact(peta[pemain.getPosisiX()][pemain.getPosisiY()+1]);
+	                }else if(peta[pemain.getPosisiX()][pemain.getPosisiY()+1] instanceof Truck){
+	                    pemain.interact(peta[pemain.getPosisiX()][pemain.getPosisiY()+1]);
+	                }else if (peta[pemain.getPosisiX()][pemain.getPosisiY()+1] instanceof Mixer){
+	                    pemain.interact(peta[pemain.getPosisiX()][pemain.getPosisiY()+1]);
+	                }
+	            }
+			} else if(input == "kill up"){
+				if(isInRange(pemain.getPosisiX()-1,pemain.getPosisiY())){
+					if(isLand(pemain.getPosisiX()-1,pemain.getPosisiY())){
+						if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()].getIsObjectExist()){
+							found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found and i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX()-1 and ytemp==pemain.getPosisiY()){
+									if(AnimalTemp instanceof MeatProducingFarmAnimal){
+										peta[AnimalTemp.getX()][AnimalTemp.getY()].setIsObjectExist(false);
+										FarmProduct temp = AnimalTemp.respondKill();
+										ListFarmAnimal.remove(AnimalTemp);
+										pemain.addElTas(temp);
+										//cout<<temp.getCode()<<" "<<temp.getHarga()<<endl;
+									}
+									found = true;
+								}
+								i++;
+							}
+						}
+					}
+				}
+			} else if(input == "kill left"){
+				if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()-1)){
+					if(isLand(pemain.getPosisiX(),pemain.getPosisiY()-1)){
+						if(peta[pemain.getPosisiX()][pemain.getPosisiY()-1].getIsObjectExist()){
+							found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found and i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX() and ytemp==pemain.getPosisiY()-1){
+									if(AnimalTemp instanceof MeatProducingFarmAnimal){
+										peta[AnimalTemp.getX()][AnimalTemp.getY()].setIsObjectExist(false);
+										FarmProduct temp = AnimalTemp.respondKill();
+										ListFarmAnimal.remove(AnimalTemp);
+										pemain.addElTas(temp);
+										//cout<<temp.getCode()<<" "<<temp.getHarga()<<endl;
+									}
+									found = true;
+								}
+								i++;
+							}
+						}
+					}
+				}
+			} else if(input == "kill down"){
+				if(isInRange(pemain.getPosisiX()+1,pemain.getPosisiY())){
+					if(isLand(pemain.getPosisiX()+1,pemain.getPosisiY())){
+						if(peta[pemain.getPosisiX()+1][pemain.getPosisiY()].getIsObjectExist()){
+							found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found and i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX()+1 and ytemp==pemain.getPosisiY()){
+									if(AnimalTemp instanceof MeatProducingFarmAnimal){
+										peta[AnimalTemp.getX()][AnimalTemp.getY()].setIsObjectExist(false);
+										FarmProduct temp = AnimalTemp.respondKill();
+										ListFarmAnimal.remove(AnimalTemp);
+										pemain.addElTas(temp);
+										//cout<<temp.getCode()<<" "<<temp.getHarga()<<endl;
+									}
+									found = true;
+								}
+								i++;
+							}
+						}
+					}
+				}
+			} else if(input == "kill right"){
+				if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()+1)){
+					if(isLand(pemain.getPosisiX(),pemain.getPosisiY()+1)){
+						if(peta[pemain.getPosisiX()][pemain.getPosisiY()+1].getIsObjectExist()){
+							found = false;
+							i = 0;
+							FarmAnimal AnimalTemp;
+							while(!found and i <ListFarmAnimal.size()){
+								AnimalTemp = (ListFarmAnimal.get(i));
+								xtemp = AnimalTemp.getX();
+								ytemp = AnimalTemp.getY();
+								if(xtemp==pemain.getPosisiX() and ytemp==pemain.getPosisiY()+1){
+									if(AnimalTemp instanceof MeatProducingFarmAnimal){
+										peta[AnimalTemp.getX()][AnimalTemp.getY()].setIsObjectExist(false);
+										FarmProduct temp = AnimalTemp.respondKill();
+										ListFarmAnimal.remove(AnimalTemp);
+										pemain.addElTas(temp);
+										//cout<<temp.getCode()<<" "<<temp.getHarga()<<endl;
+									}
+									found = true;
+								}
+								i++;
+							}
+						}
+					}
+				}
+			} else if(input == "grow"){
+				pemain.grow(peta[pemain.getPosisiX()][pemain.getPosisiY()]);
+			} else if(input == "tutorial"){
+				tutorial();
+			} else if(input == "keterangan"){
+				keterangan();
+			} else if(input == "status"){
+				pemain.printPlayerStatus(); 
+			} else if(input == "listCommand"){
+				listCommand();
+			} else{
+				System.out.println("input error");
+			}
+			nextTick();
+			printPeta();
+			System.out.println("Masukkan inputan permainan :");
+			input = in.next();
+		}
+	}
 	public void listCommand(){
 		System.out.println("!--- LIST COMMAND ---!");
 		System.out.println("talk up");
@@ -108,24 +561,24 @@ class Game{
 	}
 
 	public void tutorial(){
-		cout<<"!--- TUTORIAL ---!"<<endl<<endl;
+		//System.out.println("!--- TUTORIAL ---!"<<endl<<endl;
 		keterangan();
 		listCommand();
 	}
 
 	public void keterangan(){
-		cout<<"--- KETERANGAN ---"<<endl;
-		cout<<"A : Ayam"<<endl;
-		cout<<"D : Bebek"<<endl;
-		cout<<"B : Kerbau"<<endl;
-		cout<<"S : Domba"<<endl;
-		cout<<"C : Sapi"<<endl;
-		cout<<"G : Kambing"<<endl;
-		cout<<"P : Player"<<endl;
-		cout<<"- : Grassland"<<endl;
-		cout<<"x : Barn"<<endl;
-		cout<<"o : Coop"<<endl;
-		cout<<"*,@,# : Land dengan rumput"<<endl<<endl;
+		// cout<<"--- KETERANGAN ---"<<endl;
+		// cout<<"A : Ayam"<<endl;
+		// cout<<"D : Bebek"<<endl;
+		// cout<<"B : Kerbau"<<endl;
+		// cout<<"S : Domba"<<endl;
+		// cout<<"C : Sapi"<<endl;
+		// cout<<"G : Kambing"<<endl;
+		// cout<<"P : Player"<<endl;
+		// cout<<"- : Grassland"<<endl;
+		// cout<<"x : Barn"<<endl;
+		// cout<<"o : Coop"<<endl;
+		// cout<<"*,@,# : Land dengan rumput"<<endl<<endl;
 	}
 
 	public int isInRange(int x,int y){
@@ -133,7 +586,7 @@ class Game{
 	}
 
 	public int isLand(int x,int y){
-		return (typeid(Grassland)==typeid(*peta[x][y]) || typeid(Barn)==typeid(*peta[x][y]) || typeid(Coop)==typeid(*peta[x][y]) );
+		return ((peta[x][y] instanceof Grassland) || (peta[x][y] instanceof Barn) || (peta[x][y] instanceof Coop) );
 	}
 
 }
