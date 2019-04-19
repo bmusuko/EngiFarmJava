@@ -50,6 +50,6 @@ class Truck extends Facility{
     }
 
     public char displaySymbol(){
-        return "T";
+        return 'T';
     }
 }

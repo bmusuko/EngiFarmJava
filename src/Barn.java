@@ -1,5 +1,3 @@
-package EngiFarmJava.src;
-
 class Barn extends Land {
     Barn(int X, int Y){
         super(X, Y, false, false);
@@ -7,9 +5,9 @@ class Barn extends Land {
 
     public char displaySymbol(){
         if (isGrassExist){
-            return "@";
+            return '@';
         }else{
-            return "x";
+            return 'x';
         }
     }
 }

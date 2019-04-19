@@ -1,5 +1,3 @@
-package EngiFarmJava.src;
-
 abstract class Land extends Cell{
     protected boolean isObjectExist;
     protected boolean isGrassExist;

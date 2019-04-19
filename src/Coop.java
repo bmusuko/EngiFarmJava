@@ -1,5 +1,3 @@
-package EngiFarmJava.src;
-
 class Coop extends Land {
     Coop(int X, int Y){
         super(X, Y, false, false);
@@ -7,9 +5,9 @@ class Coop extends Land {
 
     public char displaySymbol(){
         if (isGrassExist){
-            return "o";
+            return 'o';
         }else{
-            return "#";
+            return '#';
         }
     }
 }

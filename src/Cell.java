@@ -1,5 +1,3 @@
-package EngiFarmJava.src;
-
 abstract class Cell {
     protected int X;
     protected int Y;

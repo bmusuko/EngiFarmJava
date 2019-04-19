@@ -1,6 +1,5 @@
 import java.util.LinkedList;
-
-import sun.jvm.hotspot.runtime.win32_amd64.Win32AMD64JavaThreadPDAccess;
+import java.util.ListIterator;
 
 class Player{
     private int posisiX;
@@ -80,18 +79,18 @@ class Player{
 
 
     //Additional method
-    public void kill(T< ? extends MeatProducingFarmAnimal> X ){
-        //masih bingung
-    }
+    // public void kill(< ? extends MeatProducingFarmAnimal> X ){
+    //     //masih bingung
+    // }
 
-    public void interact(T< ? extends MilkProducingFarmAnimal> X ){
-        //masih bingung
-    }
+    // public void interact(< ? extends MilkProducingFarmAnimal> X ){
+    //     //masih bingung
+    // }
 
 
-    public void interact(T< ? extends EggProducingFarmAnimal> X ){
-        //masih bingung
-    }
+    // public void interact(< ? extends EggProducingFarmAnimal> X ){
+    //     //masih bingung
+    // }
 
 
     public void interact(Facility F){
@@ -105,6 +104,20 @@ class Player{
             wadahAir--;
         }else{
             System.out.println("Wadah air anda kosong!");
+        }
+    }
+
+    public void displayStatus(){
+        System.out.println("Wadah Air : "+this.wadahAir);
+        System.out.println("Money : "+this.money);
+        if (this.tas.isEmpty()){
+            System.out.println("Inventory Kosong");
+        }else{
+            ListIterator iter = tas.listIterator(0);
+            System.out.println("Inventory : ");
+            while(iter.hasNext()){
+                System.out.println(iter.next());
+            }
         }
     }
 }
