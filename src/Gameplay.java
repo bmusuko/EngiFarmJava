@@ -13,7 +13,23 @@ import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Gameplay extends JPanel implements ActionListener, KeyListener, MouseListener{
+public class Gameplay extends JPanel implements ActionListener, KeyListener{
     private static final long serialVersionUID = 1L;
-    
+    private Game gim;
+    private Timer time;
+
+    public Gameplay() {
+        HandleImage.initImage();
+        gim = new Game();
+        // addMouseListener(this);
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }
