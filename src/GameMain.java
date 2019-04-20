@@ -2,12 +2,17 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
 
 /**
  * Main class
@@ -18,23 +23,50 @@ import javax.swing.WindowConstants;
  * @author Y. Valentino
  */
 
-public class GameMain extends JFrame {
+public class GameMain extends JFrame implements ActionListener{
     /** 
      * main program, untuk tampilkan GUI
      */
+    public int nilai = 100;
+    public void plusnilai(){
+        this.nilai+=60;
+    }
     public static void main(String[] args) {
+        GameMain game = new GameMain();
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
+        JLabel title = new JLabel(new ImageIcon("resource/truck.png"));
+        JTextArea input = new JTextArea();
+        JButton inputButton = new JButton("Input!");
+        JLabel x  = new JLabel(new ImageIcon("resource/rsz_cow.png"));
         // panel.setBackground(Color.BLUE);
         panel.setLayout(null);
         panel.setBounds(0, 0, 1280, 800);
-        JLabel x  = new JLabel(new ImageIcon("resource/rsz_cow.png"));
+        title.setLayout(null);
+        title.setBounds(0, 0, 1280, 100);
+        title.setVisible(true);
+        panel.add(title);
+        // System.out.println(frame.nilai);
+        inputButton.setLayout(null);
+        inputButton.setBounds(560, 725, 150,25);
+        inputButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String cobaxx = input.getText();
+                System.out.println(cobaxx);
+                game.plusnilai();
+                x.setBounds(50,game.nilai,60,60);
+            }
+        });
+        panel.add(inputButton);
+        
         x.setLayout(null);
         x.setBounds(50, 100, 60, 60);
         x.setVisible(true);
         // x.setSize(60, 60);
         panel.add(x);
-        JLabel title = new JLabel(new ImageIcon("resource/truck.png"));
+        input.setLayout(null);
+        input.setBounds(50, 725, 500, 25);
+        panel.add(input);
         JLabel[][] map = new JLabel[10][11];
         for (int i = 0;i<10;i++){
             for (int j = 0;j<11;j++){
@@ -44,12 +76,6 @@ public class GameMain extends JFrame {
                 panel.add(map[i][j]);
             }
         }
-        //Di bawah ini contohnya
-        ImageIcon icontol = new ImageIcon("resource/rsz_cow.png");
-        map[1][2].setIcon(icontol);
-
-        title.setBounds(0, 0, 1280, 100);
-        panel.add(title);
         frame.setLayout(null);
         frame.setBounds(10, 10, 1280, 800);
         frame.setTitle("Engi's Farm by: SenjaGurau");
@@ -59,8 +85,12 @@ public class GameMain extends JFrame {
         // frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
         title.setBounds(0, 0, 1280, 100);
-        frame.add(title);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }
+
