@@ -1,8 +1,10 @@
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.*;
 import java.io.*;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
 /**
@@ -24,6 +26,8 @@ public class GameMain extends JFrame {
     Vector<ImageIcon> imageBackground;
     JLabel title;
     JFrame frame;
+    JTextArea input;
+    JButton inputButton;
 
     public GameMain() throws Exception{
         g = new Game();
@@ -38,7 +42,7 @@ public class GameMain extends JFrame {
         imageBackground.add(new ImageIcon("resource/rsz_truck.png"));
         imageBackground.add(new ImageIcon("resource/rsz_well.png"));
         imageBackground.add(new ImageIcon("resource/rsz_mixer.png"));
-        title = new JLabel(new ImageIcon("resource/truck.png"));
+        title = new JLabel(new ImageIcon("resource/judul.png"));
         map = new JLabel[10][11];
         for (int i = 0;i<10;i++){
             for (int j = 0;j<11;j++){
@@ -48,6 +52,9 @@ public class GameMain extends JFrame {
             }
         }
         printPeta();
+        input = new JTextArea();
+        
+        inputButton = new JButton("Input!");
     }
 
     public void printPeta(){
