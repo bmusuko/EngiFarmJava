@@ -16,6 +16,7 @@ public class Gameplay extends JFrame implements KeyListener{
     public Gameplay() {
         setTitle("Engi's Farm by senjaGurau");
         setSize(1280, 720);
+        
 
 
     }
