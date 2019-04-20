@@ -22,25 +22,15 @@ public class GameMain extends JFrame {
     /**
      * main program, untuk tampilkan GUI
      */
-    public Image getScaledImage(Image srcImg, int w, int h){
-        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = resizedImg.createGraphics();
-    
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2.drawImage(srcImg, 0, 0, w, h, null);
-        g2.dispose();
-    
-        return resizedImg;
-    }
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
         panel.setBackground(Color.BLUE);
         panel.setLayout(null);
         panel.setBounds(0, 0, 1280, 800);
-        JLabel x  = new JLabel(new ImageIcon("resource/cow.png"));
+        JLabel x  = new JLabel(new ImageIcon("resource/rsz_cow.png"));
         x.setLayout(null);
-        x.setBounds(50, 100, 500, 500);
+        x.setBounds(50, 100, 60, 60);
         x.setVisible(true);
         // x.setSize(60, 60);
         panel.add(x);
