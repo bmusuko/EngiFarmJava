@@ -1,0 +1,9 @@
+0 coop
+1 coop(grass)
+2 barn
+3 barn(grass)
+4 grassland 
+5 grassland (grass)
+6 Truck
+7 Well
+8 Mixer

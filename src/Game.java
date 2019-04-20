@@ -13,6 +13,9 @@ public class Game{
 	public Cell[][] getCell(){
 		return peta;
 	}
+	public ArrayList<FarmAnimal> getListFarmAnimal(){
+		return ListFarmAnimal;
+	}
 	public Game() throws Exception {
 		Scanner reader = new Scanner(new File("peta.txt"));  
 		ListFarmAnimal = new ArrayList<FarmAnimal>();
@@ -28,19 +31,19 @@ public class Game{
 					peta[i][j] = new Coop(i,j,false,false);
 				} else if(temp.charAt(j) == '*'){
 					// Coop C(i,j,true,false);
-					peta[i][j] = new Coop(i,j,true,false);
+					peta[i][j] = new Coop(i,j,false,true);
 				} else if(temp.charAt(j) == '-'){
 					// Grassland G(i,j,false,false);
 					peta[i][j] = new Grassland(i,j,false,false);
 				} else if (temp.charAt(j) == '#'){
 					// Grassland G(i,j,true,false);
-					peta[i][j] = new Grassland(i,j,true,false);
+					peta[i][j] = new Grassland(i,j,false,true);
 				} else if (temp.charAt(j) == 'x'){
 					// Barn B(i,j,false,false);
 					peta[i][j] = new Barn(i,j,false,false);
 				} else if (temp.charAt(j) == '@'){
 					// Barn B(i,j,true,false);
-					peta[i][j] = new Barn(i,j,true,false);
+					peta[i][j] = new Barn(i,j,false,true);
 				} else if (temp.charAt(j) == 'T'){
 					// Truck T(i,j);
 					peta[i][j] = new Truck(i,j);
