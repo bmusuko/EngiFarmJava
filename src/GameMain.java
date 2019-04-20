@@ -1,18 +1,9 @@
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.util.*;
+import java.io.*;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
-import javax.swing.border.BevelBorder;
 
 /**
  * Main class
@@ -22,75 +13,92 @@ import javax.swing.border.BevelBorder;
  * @author Bram Musuko
  * @author Y. Valentino
  */
+@SuppressWarnings("serial")
 
-public class GameMain extends JFrame implements ActionListener{
-    /** 
+public class GameMain extends JFrame {
+    /**
      * main program, untuk tampilkan GUI
      */
-    public int nilai = 100;
-    public void plusnilai(){
-        this.nilai+=60;
-    }
-    public static void main(String[] args) {
-        GameMain game = new GameMain();
-        JFrame frame = new JFrame();
-        JPanel panel = new JPanel();
-        JLabel title = new JLabel(new ImageIcon("resource/truck.png"));
-        JTextArea input = new JTextArea();
-        JButton inputButton = new JButton("Input!");
-        JLabel x  = new JLabel(new ImageIcon("resource/rsz_cow.png"));
-        // panel.setBackground(Color.BLUE);
-        panel.setLayout(null);
-        panel.setBounds(0, 0, 1280, 800);
-        title.setLayout(null);
-        title.setBounds(0, 0, 1280, 100);
-        title.setVisible(true);
-        panel.add(title);
-        // System.out.println(frame.nilai);
-        inputButton.setLayout(null);
-        inputButton.setBounds(560, 725, 150,25);
-        inputButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                String cobaxx = input.getText();
-                System.out.println(cobaxx);
-                game.plusnilai();
-                x.setBounds(50,game.nilai,60,60);
-            }
-        });
-        panel.add(inputButton);
-        
-        x.setLayout(null);
-        x.setBounds(50, 100, 60, 60);
-        x.setVisible(true);
-        // x.setSize(60, 60);
-        panel.add(x);
-        input.setLayout(null);
-        input.setBounds(50, 725, 500, 25);
-        panel.add(input);
-        JLabel[][] map = new JLabel[10][11];
+    private Game g;
+    private JLabel[][] map;
+    Vector<ImageIcon> imageBackground;
+    JLabel title;
+    JFrame frame;
+
+    public GameMain() throws Exception{
+        g = new Game();
+        frame = new JFrame();
+        imageBackground = new Vector<ImageIcon>();
+        imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_barn.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_barngrass.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_grassland.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_grasslandgrass.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_truck.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_well.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_mixer.png"));
+        title = new JLabel(new ImageIcon("resource/truck.png"));
+        map = new JLabel[10][11];
         for (int i = 0;i<10;i++){
             for (int j = 0;j<11;j++){
-                map[i][j] = new JLabel(new ImageIcon("resource/Grassland.jpg"));
-                map[i][j].setLayout(null);
+                map[i][j] = new JLabel(new ImageIcon("resource/rsz_coop.jpg"));
                 map[i][j].setBounds(50+(j*60),100+(i*60),60,60);
-                panel.add(map[i][j]);
+                frame.add(map[i][j]);
             }
         }
-        frame.setLayout(null);
-        frame.setBounds(10, 10, 1280, 800);
-        frame.setTitle("Engi's Farm by: SenjaGurau");
-        frame.add(panel);
-        frame.setResizable(false);
-        frame.setVisible(true);
-        // frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        title.setBounds(0, 0, 1280, 100);
+        printPeta();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+    public void printPeta(){
+        Cell[][] peta = g.getCell();
+        for(int i=0;i<10;i++){
+            for(int j=0;j<11;j++){
+                if(peta[i][j] instanceof Grassland){
+                    if(peta[i][j].getIsGrassExist()){
+                        map[i][j].setIcon(imageBackground.get(5));
+                    } else{
+                        map[i][j].setIcon(imageBackground.get(4));
+                    }
+                } else if(peta[i][j] instanceof Barn){
+                    if(peta[i][j].getIsGrassExist()){
+                        map[i][j].setIcon(imageBackground.get(3));
+                    } else{
+                        map[i][j].setIcon(imageBackground.get(2));
+                    }
+                } else if(peta[i][j] instanceof Coop){
+                    if(peta[i][j].getIsGrassExist()){
+                        map[i][j].setIcon(imageBackground.get(1));
+                    } else{
+                        map[i][j].setIcon(imageBackground.get(0));
+                    }
+                } else if(peta[i][j] instanceof Truck){
+                    map[i][j].setIcon(imageBackground.get(6));
+                } else if(peta[i][j] instanceof Mixer){
+                    map[i][j].setIcon(imageBackground.get(8));
+                } else if(peta[i][j] instanceof Well){
+                    map[i][j].setIcon(imageBackground.get(7));
+                }
+            }
+        }
     }
+
+    public static void main(String[] args) throws Exception {
+        GameMain view = new GameMain();
+        view.frame.setLayout(null);
+        view.frame.setBounds(10, 10, 1280, 800);
+        view.frame.setTitle("Engi's Farm by: SenjaGurau");
+        view.title.setBounds(0, 0, 1280, 100);
+        view.frame.add(view.title);
+        view.frame.setResizable(false);
+        view.frame.setVisible(true);
+
+        view.frame.setLocationRelativeTo(null);
+        view.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        view.title.setBounds(0, 0, 1280, 100);
+        view.frame.add(view.title);
+    }
+
+    
 }
-

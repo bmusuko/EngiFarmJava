@@ -38,8 +38,6 @@ public class GameMainDummy extends JFrame {
         imageBackground.add(new ImageIcon("resource/rsz_truck.png"));
         imageBackground.add(new ImageIcon("resource/rsz_well.png"));
         imageBackground.add(new ImageIcon("resource/rsz_mixer.png"));
-        //imageBackground.add(new ImageIcon("resource/rsz_grasslandgrass.jpg"))
-        // imageBackground.add(new ImageIcon("resource/Grassland(grass).jpg"))
         title = new JLabel(new ImageIcon("resource/truck.png"));
         map = new JLabel[10][11];
         for (int i = 0;i<10;i++){
@@ -60,15 +58,13 @@ public class GameMainDummy extends JFrame {
         view.frame.add(view.title);
         view.frame.setResizable(false);
         view.frame.setVisible(true);
-        // frame.pack();
+
         view.frame.setLocationRelativeTo(null);
         view.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         view.title.setBounds(0, 0, 1280, 100);
         view.frame.add(view.title);
-        // nanti object nya game, di add ke frame
-        // frame.add(gim);
-        
+
 
 
 
@@ -106,42 +102,4 @@ public class GameMainDummy extends JFrame {
             }
         }
     }
-    //     FarmAnimal AnimalTemp;
-    //     int xtemp,ytemp;
-    //     // cout<<"i = "<<ListFarmAnimal.size<<endl;
-    //     for(int i=0;i<ListFarmAnimal.size();i++){
-            
-    //         AnimalTemp = (ListFarmAnimal.get(i));
-    //         xtemp = AnimalTemp.getX();
-    //         ytemp = AnimalTemp.getY();
-
-    //         // cout<<"i = "<<i<<" "<<typeid(AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
-    //         // cout<<"i = "<<i<<" "<<typeid(&AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
-    //         // cout<<"i = "<<i<<" "<<typeid(*AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
-    //         // cout<<"i = "<<typeid(Chicken).name()<<endl;
-            
-    //         if(AnimalTemp instanceof Chicken){
-    //             petaTemp[xtemp][ytemp] = 'A';
-    //         } else if (AnimalTemp instanceof Duck){
-    //             petaTemp[xtemp][ytemp] = 'D';
-    //         } else if(AnimalTemp instanceof Buffalo){
-    //             petaTemp[xtemp][ytemp] = 'B';
-    //         } else if(AnimalTemp instanceof Sheep){
-    //             petaTemp[xtemp][ytemp] = 'S';
-    //         } else if(AnimalTemp instanceof Cow){
-    //             petaTemp[xtemp][ytemp] = 'C';
-    //         } else if(AnimalTemp instanceof Goat){
-    //             petaTemp[xtemp][ytemp] = 'G';
-    //         }
-    //         // cout<<"Samp "<<i<<endl;
-    //     }
-    //     // cout<<"Sampe 2"<<endl;
-    //     petaTemp[pemain.getPosisiX()][pemain.getPosisiY()] = 'P';
-    //     for(int i=0;i<n;i++){
-    //         for(int j=0;j<m;j++){
-    //             System.out.println((petaTemp[i][j])+" ");
-    //         }
-    //         System.out.println();
-    //     }
-    // }
 }
