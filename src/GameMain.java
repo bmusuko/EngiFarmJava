@@ -23,11 +23,12 @@ public class GameMain extends JFrame {
         JLabel[][] map = new JLabel[10][11];
         for (int i = 0;i<10;i++){
             for (int j = 0;j<11;j++){
-                map[i][j] = new JLabel(i+" "+j);
+                map[i][j] = new JLabel(new ImageIcon("resource/Grassland.jpg"));
                 map[i][j].setBounds(50+(j*60),100+(i*60),60,60);
                 frame.add(map[i][j]);
             }
         }
+        // map[2][3].setIcon(new ImageIcon("resource/cow.png"));
         // Masukin obejct game disini
         // Gameplay gim = new Gameplay();
         
