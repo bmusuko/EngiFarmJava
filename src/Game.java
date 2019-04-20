@@ -10,6 +10,9 @@ public class Game{
 	private int m;
 	private Player pemain;
 
+	public Player getPlayer(){
+		return pemain;
+	}
 	public Cell[][] getCell(){
 		return peta;
 	}
