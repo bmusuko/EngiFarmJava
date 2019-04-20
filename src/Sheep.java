@@ -2,7 +2,7 @@ import java.util.*;
 
 
 
-class Sheep extends FarmAnimal implements MeatProducingFarmAnimal<SheepMeat>{
+class Sheep extends FarmAnimal implements MeatProducingFarmAnimal{
 	public Sheep(int x,int y){
 		super(x,y,12);
 	}

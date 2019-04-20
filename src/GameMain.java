@@ -41,6 +41,9 @@ public class GameMain extends JFrame {
         // frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        title.setBounds(0, 0, 1280, 100);
+        frame.add(title);
         // nanti object nya game, di add ke frame
         // frame.add(gim);
         

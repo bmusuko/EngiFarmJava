@@ -80,13 +80,13 @@ class Player{
 
     // Additional method
 
-    public void interact(MilkProducingFarmAnimal<Product> animal){
+    public void interact(MilkProducingFarmAnimal animal){
         //masih bingung
         this.addElTas(animal.respondInteract());
     }
 
 
-    public void interact(EggProducingFarmAnimal<Product> animal){
+    public void interact(EggProducingFarmAnimal animal){
         //masih bingung
         this.addElTas(animal.respondInteract());
     }
