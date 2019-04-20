@@ -45,23 +45,28 @@ public class Mixer extends Facility {
     }
 
     public LinkedList<Product> deleteNeededPoduct(LinkedList<Product> LP, Product P1, Product P2) {
-        boolean foundP1 = true; int f1 = 0;
-        boolean foundP2 = true; int f2 = 0;
+        boolean foundP1 = true;
+        boolean foundP2 = true;
         for (int i = 0; i < LP.size(); i++) {
             if (!foundP1 && !foundP2) {
                 break;
-            }
-            if (LP.get(i) == P1 && foundP1) {
-                foundP1 = false; f1 = i;
-                continue;
-            }
-            if (LP.get(i) == P2 && foundP2) {
-                foundP2 = false; f2 = i;
-                continue;
+            } else if ((P1 instanceof ChickenEgg) && (LP.get(i) instanceof ChickenEgg) && foundP1) {
+                foundP1 = false;
+                LP.remove(LP.get(i));
+            } else if ((P2 instanceof DuckEgg) && (LP.get(i) instanceof DuckEgg) && foundP2) {
+                foundP2 = false;
+                LP.remove(LP.get(i));
+            } else if ((P1 instanceof CowMilk) && (LP.get(i) instanceof CowMilk) && foundP1) {
+                foundP1 = false;
+                LP.remove(LP.get(i));
+            } else if ((P2 instanceof GoatMilk) && (LP.get(i) instanceof GoatMilk) && foundP2) {
+                foundP2 = false;
+                LP.remove(LP.get(i));
+            } else if ((P2 instanceof CowMeat) && (LP.get(i) instanceof CowMeat) && foundP2) {
+                foundP2 = false;
+                LP.remove(LP.get(i));
             }
         }
-        LP.remove(LP.get(f1));
-        LP.remove(LP.get(f2));
         return LP;
     }
 
@@ -73,37 +78,28 @@ public class Mixer extends Facility {
             LP = deleteNeededPoduct(LP, C, D);
             LP.add(MB);
             // return LP;
-        } else {
-            // return LP;
         }
     }
 
-    public LinkedList<Product> createCheese(LinkedList<Product> LP) {
+    public void createCheese(LinkedList<Product> LP) {
         CowMilk CM = new CowMilk();
         GoatMilk GM = new GoatMilk();
         Cheese C = new Cheese();
         if (isInventAvailable(LP, CM, GM)) {
-            LP.remove(CM);
-            LP.remove(GM);
+            LP = deleteNeededPoduct(LP, CM, GM);
             LP.add(C);
-            return LP;
-        } else {
-            return LP;
+            // return LP;
         }
     }
 
-    public LinkedList<Product> createBeefRolade(LinkedList<Product> LP) {
+    public void createBeefRolade(LinkedList<Product> LP) {
         ChickenEgg C = new ChickenEgg();
-        CowMilk CM = new CowMilk();
+        CowMeat CM = new CowMeat();
         BeefRolade BM = new BeefRolade();
         if (isInventAvailable(LP, C, CM)) {
-            LP.remove(C);
-            LP.remove(CM);
+            LP = deleteNeededPoduct(LP, C, CM);
             LP.add(BM);
 
-            return LP;
-        } else {
-            return LP;
         }
     }
 
@@ -111,13 +107,12 @@ public class Mixer extends Facility {
         System.out.println("1. Martabak 2. Cheese 3. BeefRolade");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        LinkedList<Product> p;
         if (n == 1) {
             createMartabak(P.getTas());
         } else if (n == 2) {
-            p = createCheese(P.getTas());
+            createCheese(P.getTas());
         } else if (n == 3) {
-            p = createBeefRolade(P.getTas());
+            createBeefRolade(P.getTas());
         }
         sc.close();
     }
