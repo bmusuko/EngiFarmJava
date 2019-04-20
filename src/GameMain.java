@@ -19,13 +19,13 @@ import javax.swing.WindowConstants;
  */
 
 public class GameMain extends JFrame {
-    /**
+    /** 
      * main program, untuk tampilkan GUI
      */
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
-        panel.setBackground(Color.BLUE);
+        // panel.setBackground(Color.BLUE);
         panel.setLayout(null);
         panel.setBounds(0, 0, 1280, 800);
         JLabel x  = new JLabel(new ImageIcon("resource/rsz_cow.png"));
@@ -44,13 +44,15 @@ public class GameMain extends JFrame {
                 panel.add(map[i][j]);
             }
         }
-        
-        
+        //Di bawah ini contohnya
+        ImageIcon icontol = new ImageIcon("resource/rsz_cow.png");
+        map[1][2].setIcon(icontol);
+
+        title.setBounds(0, 0, 1280, 100);
+        panel.add(title);
         frame.setLayout(null);
         frame.setBounds(10, 10, 1280, 800);
         frame.setTitle("Engi's Farm by: SenjaGurau");
-        title.setBounds(0, 0, 1280, 100);
-        frame.add(title);
         frame.add(panel);
         frame.setResizable(false);
         frame.setVisible(true);
@@ -60,11 +62,5 @@ public class GameMain extends JFrame {
         
         title.setBounds(0, 0, 1280, 100);
         frame.add(title);
-        // nanti object nya game, di add ke frame
-        // frame.add(gim);
-        
-
-
-
     }
 }
