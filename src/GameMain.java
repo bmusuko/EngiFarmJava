@@ -25,16 +25,30 @@ public class GameMain extends JFrame implements ActionListener {
      */
     private Game g;
     private JLabel[][] map;
+    private boolean first;
     Vector<ImageIcon> imageBackground;
-    JLabel title,labelKeterangan;
+    Vector<JLabel> dummyFarmAnimal;
+    JLabel title;
     JFrame frame;
-    JTextArea input;
-    JButton inputButton;
+    // JTextArea input;
+    // JButton inputButton;
 
     public GameMain() throws Exception {
         g = new Game();
         frame = new JFrame();
         imageBackground = new Vector<ImageIcon>();
+        dummyFarmAnimal = new Vector<JLabel>();
+        first = true;
+        frame.setVisible(false);
+        frame.setLayout(null);
+        JTextArea input = new JTextArea();
+        input.setLayout(null);
+        input.setBounds(50, 725, 500, 25);
+        frame.add(input);
+        JButton inputButton = new JButton("Input!");
+        inputButton.setLayout(null);
+        inputButton.setBounds(560, 725, 150, 25);
+        frame.add(inputButton);
         imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_barn.jpg"));
@@ -44,8 +58,119 @@ public class GameMain extends JFrame implements ActionListener {
         imageBackground.add(new ImageIcon("resource/rsz_truck.png"));
         imageBackground.add(new ImageIcon("resource/rsz_well.png"));
         imageBackground.add(new ImageIcon("resource/rsz_mixer.png"));
-        title = new JLabel(new ImageIcon("resource/judul.png"));
+
+        imageBackground.add(new ImageIcon("resource/rsz_buffalo.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_buffalohungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_chicken.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_chickenhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_cow.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_cowhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_duck.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_duckhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_goat.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_goathungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_sheep.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_sheephungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_player.png"));
+        title = new JLabel(new ImageIcon("resource/truck.png"));
         map = new JLabel[10][11];
+        printPeta();
+        frame.revalidate();
+        frame.repaint();
+        
+    }
+
+    public static void main(String[] args) throws Exception {
+        GameMainDummy view = new GameMainDummy();
+        view.frame.setLayout(null);
+        view.frame.setBounds(10, 10, 1280, 800);
+        view.frame.setTitle("Engi's Farm by: SenjaGurau");
+        view.title.setBounds(0, 0, 1280, 100);
+        view.frame.add(view.title);
+        view.frame.setResizable(false);
+
+        view.frame.setLocationRelativeTo(null);
+        view.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        view.frame.setVisible(true);   
+    }
+
+    public void printPeta() {
+        Cell[][] peta = g.getCell();
+
+        FarmAnimal AnimalTemp;
+        int xtemp, ytemp;
+        ArrayList<FarmAnimal> ListFarmAnimal = g.getListFarmAnimal();
+        Player p = g.getPlayer();
+        for (int i = 0; i < dummyFarmAnimal.size(); i++) {
+            dummyFarmAnimal.remove(dummyFarmAnimal.get(i));
+        }
+        dummyFarmAnimal = new Vector<JLabel>();
+
+        for (int i = 0; i < ListFarmAnimal.size() + 1; i++) {
+            dummyFarmAnimal.add(new JLabel(new ImageIcon("resource/rsz_coop.jpg")));
+            dummyFarmAnimal.get(i).setBounds(50, 100, 60, 60);
+            frame.add(dummyFarmAnimal.get(i));
+        }
+
+        for (int i = 0; i < ListFarmAnimal.size(); i++) {
+            AnimalTemp = (ListFarmAnimal.get(i));
+            xtemp = AnimalTemp.getX();
+            ytemp = AnimalTemp.getY();
+            if (AnimalTemp instanceof Chicken) {
+                if (AnimalTemp.isLapar()) {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(12));
+                } else {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(11));
+                }
+            } else if (AnimalTemp instanceof Duck) {
+                if (AnimalTemp.isLapar()) {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(16));
+                } else {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(15));
+                }
+            } else if (AnimalTemp instanceof Buffalo) {
+                if (AnimalTemp.isLapar()) {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(10));
+                } else {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(9));
+                }
+            } else if (AnimalTemp instanceof Sheep) {
+                if (AnimalTemp.isLapar()) {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(20));
+                } else {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(19));
+                }
+            } else if (AnimalTemp instanceof Cow) {
+                if (AnimalTemp.isLapar()) {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(14));
+                } else {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(13));
+                }
+            } else if (AnimalTemp instanceof Goat) {
+                if (AnimalTemp.isLapar()) {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(18));
+                } else {
+                    dummyFarmAnimal.get(i).setIcon(imageBackground.get(17));
+                }
+
+            }
+            dummyFarmAnimal.get(i).setLayout(null);
+            dummyFarmAnimal.get(i).setBounds(50 + (ytemp * 60), 100 + (xtemp * 60), 60, 60);
+            dummyFarmAnimal.get(i).setVisible(true);
+
+        }
+        dummyFarmAnimal.get(dummyFarmAnimal.size() - 1).setIcon(imageBackground.get(21));
+        dummyFarmAnimal.get(dummyFarmAnimal.size() - 1).setLayout(null);
+        dummyFarmAnimal.get(dummyFarmAnimal.size() - 1).setBounds(50 + (p.getPosisiY() * 60),
+                100 + (p.getPosisiX() * 60), 60, 60);
+        dummyFarmAnimal.get(dummyFarmAnimal.size() - 1).setVisible(true);
+        if (!first) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 11; j++) {
+                    frame.remove(map[i][j]);
+                }
+            }
+        }
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 11; j++) {
                 map[i][j] = new JLabel(new ImageIcon("resource/rsz_coop.jpg"));
@@ -53,26 +178,9 @@ public class GameMain extends JFrame implements ActionListener {
                 frame.add(map[i][j]);
             }
         }
-        printPeta();
-        input = new JTextArea();
-        input.setLayout(null);
-        input.setBounds(50, 725, 500, 25);
-        frame.add(input);
-        inputButton = new JButton("Input!");
-        inputButton.setLayout(null);
-        inputButton.setBounds(560, 725, 150, 25);
-        inputButton.addActionListener(this);
-        frame.add(inputButton);
-        labelKeterangan = new JLabel(new ImageIcon("resource/ket.png"));
-        labelKeterangan.setLayout(null);
-        labelKeterangan.setBounds(980, 100, 250, 600);
-        frame.add(labelKeterangan);
-    }
-
-    public void printPeta() {
-        Cell[][] peta = g.getCell();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 11; j++) {
+
                 if (peta[i][j] instanceof Grassland) {
                     if (peta[i][j].getIsGrassExist()) {
                         map[i][j].setIcon(imageBackground.get(5));
@@ -100,31 +208,11 @@ public class GameMain extends JFrame implements ActionListener {
                 }
             }
         }
+        first = false;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // System.out.println("kontol");
+
     }
-
-    public static void main(String[] args) throws Exception {
-        GameMain view = new GameMain();
-        view.frame.setLayout(null);
-        view.frame.setBounds(10, 10, 1280, 800);
-        view.frame.setTitle("Engi's Farm by: SenjaGurau");
-        view.title.setBounds(0, 0, 1280, 100);
-        view.frame.add(view.title);
-        view.frame.setResizable(false);
-        view.frame.setVisible(true);
-
-        view.frame.setLocationRelativeTo(null);
-        view.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        view.title.setBounds(0, 0, 1280, 100);
-        view.frame.add(view.title);
-    }
-
-    
-
-    
 }

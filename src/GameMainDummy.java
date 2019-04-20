@@ -30,7 +30,6 @@ public class GameMainDummy extends JFrame {
     public GameMainDummy() throws Exception{
         g = new Game();
         frame = new JFrame();
-        frame.setLayout(null);
         imageBackground = new Vector<ImageIcon>();
         dummyFarmAnimal = new Vector<JLabel>();
         first = true;
@@ -147,11 +146,11 @@ public class GameMainDummy extends JFrame {
                 } else{
                     dummyFarmAnimal.get(i).setIcon(imageBackground.get(17));
                 }
+
             }
-            JLabel peler = dummyFarmAnimal.get(i);
-            peler.setLayout(null);
-            peler.setBounds(50+(ytemp*60),100+(xtemp*60), 60, 60);
-            frame.add(peler);
+            dummyFarmAnimal.get(i).setLayout(null);
+            dummyFarmAnimal.get(i).setBounds(50+(ytemp*60),100+(xtemp*60), 60, 60);
+            dummyFarmAnimal.get(i).setVisible(true);
             // cout<<"Samp "<<i<<endl;
         }
         dummyFarmAnimal.get(dummyFarmAnimal.size()-1).setIcon(imageBackground.get(21));
