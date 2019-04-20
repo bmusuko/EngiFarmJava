@@ -28,10 +28,10 @@ public class GameMain extends JFrame implements ActionListener {
     private boolean first;
     Vector<ImageIcon> imageBackground;
     Vector<JLabel> dummyFarmAnimal;
-    JLabel title;
+    JLabel title,ketJLabel;
     JFrame frame;
-    // JTextArea input;
-    // JButton inputButton;
+    JTextArea input;
+    JButton inputButton;
 
     public GameMain() throws Exception {
         g = new Game();
@@ -39,16 +39,19 @@ public class GameMain extends JFrame implements ActionListener {
         imageBackground = new Vector<ImageIcon>();
         dummyFarmAnimal = new Vector<JLabel>();
         first = true;
-        frame.setVisible(false);
-        frame.setLayout(null);
-        JTextArea input = new JTextArea();
+        input = new JTextArea();
         input.setLayout(null);
         input.setBounds(50, 725, 500, 25);
         frame.add(input);
-        JButton inputButton = new JButton("Input!");
+        inputButton = new JButton("Input!");
         inputButton.setLayout(null);
         inputButton.setBounds(560, 725, 150, 25);
+        inputButton.addActionListener(this);
         frame.add(inputButton);
+        ketJLabel = new JLabel(new ImageIcon("resource/ket.png"));
+        ketJLabel.setLayout(null);
+        ketJLabel.setBounds(980, 100, 250, 600);
+        frame.add(ketJLabel);
         imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_barn.jpg"));
@@ -72,7 +75,7 @@ public class GameMain extends JFrame implements ActionListener {
         imageBackground.add(new ImageIcon("resource/rsz_sheep.png"));
         imageBackground.add(new ImageIcon("resource/rsz_sheephungry.png"));
         imageBackground.add(new ImageIcon("resource/rsz_player.png"));
-        title = new JLabel(new ImageIcon("resource/truck.png"));
+        title = new JLabel(new ImageIcon("resource/judul.png"));
         map = new JLabel[10][11];
         printPeta();
         frame.revalidate();
@@ -81,7 +84,7 @@ public class GameMain extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) throws Exception {
-        GameMainDummy view = new GameMainDummy();
+        GameMain view = new GameMain();
         view.frame.setLayout(null);
         view.frame.setBounds(10, 10, 1280, 800);
         view.frame.setTitle("Engi's Farm by: SenjaGurau");
@@ -101,8 +104,10 @@ public class GameMain extends JFrame implements ActionListener {
         int xtemp, ytemp;
         ArrayList<FarmAnimal> ListFarmAnimal = g.getListFarmAnimal();
         Player p = g.getPlayer();
-        for (int i = 0; i < dummyFarmAnimal.size(); i++) {
-            dummyFarmAnimal.remove(dummyFarmAnimal.get(i));
+        int s = dummyFarmAnimal.size();
+        for (int i = 0; i < s ; i++) {
+            frame.remove(dummyFarmAnimal.get(0));
+            dummyFarmAnimal.remove(dummyFarmAnimal.get(0));
         }
         dummyFarmAnimal = new Vector<JLabel>();
 
@@ -213,6 +218,15 @@ public class GameMain extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        String inputString = this.input.getText();
+        inputString.strip();
+        if (inputString == "move down"){
+            System.out.println("masuk");
+        }else{
+            System.out.println("asu");
+        }
+        System.out.println(inputString.length());
+        g.play(inputString);
+        printPeta();
     }
 }

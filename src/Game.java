@@ -175,6 +175,8 @@ public class Game{
 	// 	}
 	// }
 	public void play(String input){
+		System.out.println(input);
+		System.out.println(input.length());
 		boolean found;
 		int xtemp,ytemp,i;
 		if (input == "move up"){

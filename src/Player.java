@@ -49,13 +49,13 @@ class Player{
             case 1:
                 this.posisiX--;
                 break;
-            case 2:
+            case 3:
                 this.posisiX++;
                 break;
-            case 3:
+            case 4:
                 this.posisiY--;
                 break;
-            case 4:
+            case 2:
                 this.posisiY++;
                 break;
         }
