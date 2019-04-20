@@ -41,6 +41,6 @@ abstract class FarmAnimal{
 		return y;
 	}
 	public boolean isLapar(){
-		return (lapar<=10);
+		return (lapar<=0);
 	}
 }

@@ -22,6 +22,7 @@ public class GameMainDummy extends JFrame {
     private Game g;
     private JLabel[][] map;
     Vector<ImageIcon> imageBackground;
+    Vector<JLabel> dummyFarmAnimal;
     JLabel title;
     JFrame frame;
 
@@ -29,6 +30,7 @@ public class GameMainDummy extends JFrame {
         g = new Game();
         frame = new JFrame();
         imageBackground = new Vector<ImageIcon>();
+        dummyFarmAnimal = new Vector<JLabel>();
         imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_barn.jpg"));
@@ -38,6 +40,23 @@ public class GameMainDummy extends JFrame {
         imageBackground.add(new ImageIcon("resource/rsz_truck.png"));
         imageBackground.add(new ImageIcon("resource/rsz_well.png"));
         imageBackground.add(new ImageIcon("resource/rsz_mixer.png"));
+
+        imageBackground.add(new ImageIcon("resource/rsz_buffalo.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_buffalohungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_chicken.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_chickenhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_cow.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_cowhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_duck.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_duckhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_goat.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_goathungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_sheep.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_sheephungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_player.png"));
+
+        //imageBackground.add(new ImageIcon("resource/rsz_grasslandgrass.jpg"))
+        // imageBackground.add(new ImageIcon("resource/Grassland(grass).jpg"))
         title = new JLabel(new ImageIcon("resource/truck.png"));
         map = new JLabel[10][11];
         for (int i = 0;i<10;i++){
@@ -101,5 +120,71 @@ public class GameMainDummy extends JFrame {
                 }
             }
         }
+        FarmAnimal AnimalTemp;
+        int xtemp,ytemp;
+        ArrayList<FarmAnimal> ListFarmAnimal = g.getListFarmAnimal();
+        // for (int i=0;i<dummyFarmAnimal.size();i++){
+        //     frame.remove(dummyFarmAnimal.get(i));
+        // }
+        Player p = g.getPlayer();
+        frame.revalidate();
+        frame.repaint();
+        dummyFarmAnimal = new Vector<JLabel>();
+        // cout<<"i = "<<ListFarmAnimal.size<<endl;
+        for(int i=0;i<ListFarmAnimal.size();i++){
+            AnimalTemp = (ListFarmAnimal.get(i));
+            xtemp = AnimalTemp.getX();
+            ytemp = AnimalTemp.getY();
+            if(AnimalTemp instanceof Chicken){
+                if(AnimalTemp.isLapar()){
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(12)));
+                } else{
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(11)));
+                }
+            } else if (AnimalTemp instanceof Duck){
+                if(AnimalTemp.isLapar()){
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(16)));
+                } else{
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(15)));
+                }
+            } else if(AnimalTemp instanceof Buffalo){
+                if(AnimalTemp.isLapar()){
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(10)));
+                } else{
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(9)));
+                }
+            } else if(AnimalTemp instanceof Sheep){
+                if(AnimalTemp.isLapar()){
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(20)));
+                } else{
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(19)));
+                }
+            } else if(AnimalTemp instanceof Cow){
+                if(AnimalTemp.isLapar()){
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(14)));
+                } else{
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(13)));
+                }
+            } else if(AnimalTemp instanceof Goat){
+                if(AnimalTemp.isLapar()){
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(18)));
+                } else{
+                    dummyFarmAnimal.add(new JLabel(imageBackground.get(17)));
+                }
+
+            }
+            dummyFarmAnimal.get(i).setLayout(null);
+            dummyFarmAnimal.get(i).setBounds(50+(ytemp*60),100+(xtemp*60), 60, 60);
+            dummyFarmAnimal.get(i).setVisible(true);
+            // cout<<"Samp "<<i<<endl;
+        }
+        // cout<<"Sampe 2"<<endl;
+        dummyFarmAnimal.add((new JLabel(imageBackground.get(20))));
+        dummyFarmAnimal.get(ListFarmAnimal.size()).setLayout(null);
+        dummyFarmAnimal.get(ListFarmAnimal.size()).setBounds(50+(p.getPosisiY()*60),100+(p.getPosisiX()*60), 60, 60);
+        dummyFarmAnimal.get(ListFarmAnimal.size()).setVisible(true);
+        frame.add(dummyFarmAnimal.get(ListFarmAnimal.size()));
     }
+
+
 }
