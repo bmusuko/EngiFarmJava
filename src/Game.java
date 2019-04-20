@@ -10,8 +10,8 @@ public class Game{
 	private int m;
 	private Player pemain;
 
-	public Game(){
-		Scanner reader = new Scanner(new File("input.txt"));  
+	public Game() throws Exception {
+		Scanner reader = new Scanner(new File("peta.txt"));  
 		n = reader.nextInt();
 		m = reader.nextInt();
 		peta = new Cell[n][m];
