@@ -32,7 +32,7 @@ public class dummy extends JFrame implements ActionListener{
         this.nilai+=60;
     }
     public static void main(String[] args) {
-        GameMain game = new GameMain();
+        dummy game = new dummy();
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
         JLabel title = new JLabel(new ImageIcon("resource/truck.png"));
@@ -86,6 +86,7 @@ public class dummy extends JFrame implements ActionListener{
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         title.setBounds(0, 0, 1280, 100);
+        
     }
 
     @Override

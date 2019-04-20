@@ -29,8 +29,10 @@ public class GameMainDummy extends JFrame {
     public GameMainDummy() throws Exception{
         g = new Game();
         frame = new JFrame();
+        frame.setLayout(null);
         imageBackground = new Vector<ImageIcon>();
         dummyFarmAnimal = new Vector<JLabel>();
+        
         imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_barn.jpg"));
@@ -54,7 +56,12 @@ public class GameMainDummy extends JFrame {
         imageBackground.add(new ImageIcon("resource/rsz_sheep.png"));
         imageBackground.add(new ImageIcon("resource/rsz_sheephungry.png"));
         imageBackground.add(new ImageIcon("resource/rsz_player.png"));
-
+        JLabel x = new JLabel();
+        Player p = g.getPlayer();
+        x.setIcon(imageBackground.get(imageBackground.size()-1));
+        x.setLayout(null);
+        x.setBounds(50+(p.getPosisiY()*60),100+(p.getPosisiX()*60), 60, 60);
+        this.frame.add(x);
         //imageBackground.add(new ImageIcon("resource/rsz_grasslandgrass.jpg"))
         // imageBackground.add(new ImageIcon("resource/Grassland(grass).jpg"))
         title = new JLabel(new ImageIcon("resource/truck.png"));
@@ -66,7 +73,7 @@ public class GameMainDummy extends JFrame {
                 frame.add(map[i][j]);
             }
         }
-        printPeta();
+        
     }
     public static void main(String[] args) throws Exception {
         GameMainDummy view = new GameMainDummy();
@@ -83,9 +90,7 @@ public class GameMainDummy extends JFrame {
         
         view.title.setBounds(0, 0, 1280, 100);
         view.frame.add(view.title);
-
-
-
+        view.printPeta();
 
     }
     public void printPeta(){
@@ -127,8 +132,8 @@ public class GameMainDummy extends JFrame {
         //     frame.remove(dummyFarmAnimal.get(i));
         // }
         Player p = g.getPlayer();
-        frame.revalidate();
-        frame.repaint();
+        // frame.revalidate();
+        // frame.repaint();
         dummyFarmAnimal = new Vector<JLabel>();
         // cout<<"i = "<<ListFarmAnimal.size<<endl;
         for(int i=0;i<ListFarmAnimal.size();i++){
@@ -171,20 +176,19 @@ public class GameMainDummy extends JFrame {
                 } else{
                     dummyFarmAnimal.add(new JLabel(imageBackground.get(17)));
                 }
-
             }
-            dummyFarmAnimal.get(i).setLayout(null);
-            dummyFarmAnimal.get(i).setBounds(50+(ytemp*60),100+(xtemp*60), 60, 60);
-            dummyFarmAnimal.get(i).setVisible(true);
+            JLabel peler = dummyFarmAnimal.get(i);
+            peler.setLayout(null);
+            peler.setBounds(50+(ytemp*60),100+(xtemp*60), 60, 60);
+            frame.add(peler);
             // cout<<"Samp "<<i<<endl;
         }
         // cout<<"Sampe 2"<<endl;
         dummyFarmAnimal.add((new JLabel(imageBackground.get(20))));
-        dummyFarmAnimal.get(ListFarmAnimal.size()).setLayout(null);
-        dummyFarmAnimal.get(ListFarmAnimal.size()).setBounds(50+(p.getPosisiY()*60),100+(p.getPosisiX()*60), 60, 60);
-        dummyFarmAnimal.get(ListFarmAnimal.size()).setVisible(true);
-        frame.add(dummyFarmAnimal.get(ListFarmAnimal.size()));
+        
+        dummyFarmAnimal.get(ListFarmAnimal.size()-1).setLayout(null);
+        dummyFarmAnimal.get(ListFarmAnimal.size()-1).setBounds(50+(p.getPosisiY()*60),100+(p.getPosisiX()*60), 60, 60);
+        dummyFarmAnimal.get(ListFarmAnimal.size()-1).setVisible(true);
+        frame.add(dummyFarmAnimal.get(ListFarmAnimal.size()-1));
     }
-
-
 }

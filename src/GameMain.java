@@ -63,11 +63,9 @@ public class GameMain extends JFrame implements ActionListener {
         inputButton.setBounds(560, 725, 150, 25);
         inputButton.addActionListener(this);
         frame.add(inputButton);
-        labelKeterangan = new JLabel();
+        labelKeterangan = new JLabel(new ImageIcon("resource/ket.png"));
         labelKeterangan.setLayout(null);
         labelKeterangan.setBounds(980, 100, 250, 600);
-        String text = "";
-        labelKeterangan.setText(text);
         frame.add(labelKeterangan);
     }
 
