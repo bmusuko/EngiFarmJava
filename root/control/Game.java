@@ -208,6 +208,8 @@ public class Game{
 							ytemp = AnimalTemp.getY();
 							if(xtemp==pemain.getPosisiX()-1 && ytemp==pemain.getPosisiY()){
 								this.suaraNow = AnimalTemp.suara();
+								System.out.println("Suara  : "+this.suaraNow);
+								this.suaraNow = null;
 								found = true;
 							}
 							i++;
@@ -228,6 +230,8 @@ public class Game{
 							ytemp = AnimalTemp.getY();
 							if(xtemp==pemain.getPosisiX() && ytemp==pemain.getPosisiY()-1){
 								this.suaraNow = AnimalTemp.suara();
+								System.out.println("Suara  : "+this.suaraNow);
+								this.suaraNow = null;
 								found = true;
 							}
 							i++;
@@ -248,6 +252,8 @@ public class Game{
 							ytemp = AnimalTemp.getY();
 							if(xtemp==pemain.getPosisiX()+1 && ytemp==pemain.getPosisiY()){
 								this.suaraNow = AnimalTemp.suara();
+								System.out.println("Suara  : "+this.suaraNow);
+								this.suaraNow = null;
 								found = true;
 							}
 							i++;
@@ -268,6 +274,8 @@ public class Game{
 							ytemp = AnimalTemp.getY();
 							if(xtemp==pemain.getPosisiX() && ytemp==pemain.getPosisiY()+1){
 								this.suaraNow = AnimalTemp.suara();
+								System.out.println("Suara  : "+this.suaraNow);
+								this.suaraNow = null;
 								found = true;
 							}
 							i++;
