@@ -1,8 +1,10 @@
 package view;
 import view.*;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import java.util.*;
 import java.awt.Button;
@@ -14,11 +16,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.*;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JWindow;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicSplitPaneUI.KeyboardEndHandler;
+
 
 import control.Game;
 import model.cell.Cell;
@@ -136,7 +140,7 @@ public class GameMain extends JFrame implements KeyListener,ActionListener{
         input.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
         frame.add(input);
 
-        ketJLabel = new JLabel(new ImageIcon("resource/ket.png"));
+        ketJLabel = new JLabel(new ImageIcon("view/resource/ket.png"));
         ketJLabel.setLayout(null);
         ketJLabel.setBounds(980, 100, 250, 600);
         frame.add(ketJLabel);
@@ -169,30 +173,30 @@ public class GameMain extends JFrame implements KeyListener,ActionListener{
         ipt.setFont(new Font("Comic Sans MS", Font.PLAIN, 28));
         frame.add(ipt);
 
-        imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
-        imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
-        imageBackground.add(new ImageIcon("resource/rsz_barn.jpg"));
-        imageBackground.add(new ImageIcon("resource/rsz_barngrass.jpg"));
-        imageBackground.add(new ImageIcon("resource/rsz_grassland.jpg"));
-        imageBackground.add(new ImageIcon("resource/rsz_grasslandgrass.jpg"));
-        imageBackground.add(new ImageIcon("resource/rsz_truck.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_well.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_mixer.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_coop.jpg"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_coopgrass.jpg"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_barn.jpg"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_barngrass.jpg"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_grassland.jpg"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_grasslandgrass.jpg"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_truck.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_well.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_mixer.png"));
 
-        imageBackground.add(new ImageIcon("resource/rsz_buffalo.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_buffalohungry.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_chicken.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_chickenhungry.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_cow.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_cowhungry.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_duck.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_duckhungry.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_goat.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_goathungry.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_sheep.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_sheephungry.png"));
-        imageBackground.add(new ImageIcon("resource/rsz_player.png"));
-        title = new JLabel(new ImageIcon("resource/judul.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_buffalo.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_buffalohungry.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_chicken.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_chickenhungry.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_cow.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_cowhungry.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_duck.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_duckhungry.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_goat.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_goathungry.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_sheep.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_sheephungry.png"));
+        imageBackground.add(new ImageIcon("view/resource/rsz_player.png"));
+        title = new JLabel(new ImageIcon("view/resource/judul.png"));
         map = new JLabel[10][11];
         printPeta();
         frame.revalidate();
@@ -229,7 +233,7 @@ public class GameMain extends JFrame implements KeyListener,ActionListener{
         dummyFarmAnimal = new Vector<JLabel>();
 
         for (int i = 0; i < ListFarmAnimal.size() + 1; i++) {
-            dummyFarmAnimal.add(new JLabel(new ImageIcon("resource/rsz_coop.jpg")));
+            dummyFarmAnimal.add(new JLabel(new ImageIcon("view/resource/rsz_coop.jpg")));
             dummyFarmAnimal.get(i).setBounds(50, 100, 60, 60);
             frame.add(dummyFarmAnimal.get(i));
         }
@@ -295,7 +299,7 @@ public class GameMain extends JFrame implements KeyListener,ActionListener{
         }
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 11; j++) {
-                map[i][j] = new JLabel(new ImageIcon("resource/rsz_coop.jpg"));
+                map[i][j] = new JLabel(new ImageIcon("view/resource/rsz_coop.jpg"));
                 map[i][j].setBounds(50 + (j * 60), 100 + (i * 60), 60, 60);
                 map[i][j].setBorder(defaultBorder);
                 frame.add(map[i][j]);

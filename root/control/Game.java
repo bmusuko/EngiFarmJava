@@ -47,6 +47,7 @@ public class Game{
 	private Player pemain;
 	private int mixerInput;
 	private Mixer tempMixer;
+	private String suaraNow;
 
 	public void setMixerInput(int mix){
 		this.mixerInput = mix;
@@ -66,7 +67,8 @@ public class Game{
 		return ListFarmAnimal;
 	}
 	public Game() throws Exception {
-		Scanner reader = new Scanner(new File("peta.txt"));  
+		suaraNow ="";
+		Scanner reader = new Scanner(new File("control/peta.txt"));  
 		ListFarmAnimal = new ArrayList<FarmAnimal>();
 		n = reader.nextInt();
 		m = reader.nextInt();
@@ -105,7 +107,7 @@ public class Game{
 				}
 			}
 		}
-		Scanner read = new Scanner(new File("dll.txt"));
+		Scanner read = new Scanner(new File("control/dll.txt"));
 		char c;
 		int x,y;
 		while(read.hasNextLine()){
@@ -197,7 +199,7 @@ public class Game{
 							xtemp = AnimalTemp.getX();
 							ytemp = AnimalTemp.getY();
 							if(xtemp==pemain.getPosisiX()-1 && ytemp==pemain.getPosisiY()){
-								AnimalTemp.suara();
+								suaraNow = AnimalTemp.suara();
 								found = true;
 							}
 							i++;
@@ -217,7 +219,7 @@ public class Game{
 							xtemp = AnimalTemp.getX();
 							ytemp = AnimalTemp.getY();
 							if(xtemp==pemain.getPosisiX() && ytemp==pemain.getPosisiY()-1){
-								AnimalTemp.suara();
+								suaraNow = AnimalTemp.suara();
 								found = true;
 							}
 							i++;
