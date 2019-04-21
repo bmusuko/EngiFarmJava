@@ -35,6 +35,7 @@ import model.farmProduct.beefRolade.*;
 import model.farmProduct.cheese.*;
 import model.farmProduct.martabak.*;
 import model.player.*;
+import view.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;

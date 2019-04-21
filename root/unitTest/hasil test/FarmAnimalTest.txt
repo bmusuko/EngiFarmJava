@@ -1,0 +1,43 @@
+Buffalo move test
+Buffalo eat test
+Buffalo respondKill test
+Buffalo lapar test
+true
+
+Chicken move test
+Chicken eat test
+Chicken respondKill test
+Chicken lapar test
+Chicken hasilProduct test
+Chicken respondInteract test
+true
+
+Cow move test
+Cow eat test
+Cow respondKill test
+Cow lapar test
+Cow hasilProduct test
+Cow respondInteract test
+true
+
+Duck move test
+Duck eat test
+Duck respondKill test
+Duck lapar test
+Duck hasilProduct test
+Duck respondInteract test
+true
+
+Goat move test
+Goat eat test
+Goat respondKill test
+Goat lapar test
+Goat hasilProduct test
+Goat respondInteract test
+true
+
+Sheep move test
+Sheep eat test
+Sheep respondKill test
+Sheep lapar test
+true
