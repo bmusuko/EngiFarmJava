@@ -44,8 +44,6 @@ class Truck extends Facility{
             }
             P.setMoney(P.getMoney()+hasil);
             cooldown = 5;
-        }else{
-            System.out.println("Truck belum siap!, silahkan menunggu "+cooldown+" tick lagi.");
         }
     }
 

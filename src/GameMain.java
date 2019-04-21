@@ -1,13 +1,21 @@
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.*;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JWindow;
 import javax.swing.WindowConstants;
+import javax.swing.border.Border;
+
+import com.sun.java.swing.plaf.windows.resources.windows;
 
 /**
  * Main class
@@ -28,10 +36,12 @@ public class GameMain extends JFrame implements ActionListener {
     private boolean first;
     Vector<ImageIcon> imageBackground;
     Vector<JLabel> dummyFarmAnimal;
-    JLabel title,ketJLabel;
+    JLabel title,ketJLabel,ketMoney,ketWadahAir,invLabel,dialogbox;
     JFrame frame;
     JTextArea input;
-    JButton inputButton;
+    JButton inputButton, martabakBtn, cheeseBtn, beefRoladeBtn;
+    Border defaultBorder;
+    JWindow w;
 
     public GameMain() throws Exception {
         g = new Game();
@@ -39,19 +49,51 @@ public class GameMain extends JFrame implements ActionListener {
         imageBackground = new Vector<ImageIcon>();
         dummyFarmAnimal = new Vector<JLabel>();
         first = true;
+
+        defaultBorder = BorderFactory.createLineBorder(Color.BLACK, 1);
         input = new JTextArea();
         input.setLayout(null);
         input.setBounds(50, 725, 500, 25);
         frame.add(input);
+
         inputButton = new JButton("Input!");
         inputButton.setLayout(null);
         inputButton.setBounds(560, 725, 150, 25);
         inputButton.addActionListener(this);
         frame.add(inputButton);
+
         ketJLabel = new JLabel(new ImageIcon("resource/ket.png"));
         ketJLabel.setLayout(null);
         ketJLabel.setBounds(980, 100, 250, 600);
         frame.add(ketJLabel);
+
+        ketMoney = new JLabel();
+        Border borderBLCK = BorderFactory.createLineBorder(Color.BLACK, 3);
+        ketMoney.setLayout(null);
+        ketMoney.setBorder(borderBLCK);
+        ketMoney.setBounds(730, 100, 230, 100);
+        ketMoney.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
+        frame.add(ketMoney);
+
+        // w = new JWindow();
+        // dialogbox = new JLabel("Silahkan pilih ingin side product apa?");
+        // martabakBtn = new Button()
+        
+
+        ketWadahAir = new JLabel();
+        ketWadahAir.setLayout(null);
+        ketWadahAir.setBorder(borderBLCK);
+        ketWadahAir.setBounds(730, 220, 230, 100);
+        ketWadahAir.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
+        frame.add(ketWadahAir);
+
+        invLabel = new JLabel();
+        invLabel.setLayout(null);
+        invLabel.setBorder(borderBLCK);
+        invLabel.setBounds(730, 340, 230, 360); 
+        invLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+        frame.add(invLabel);
+
         imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_barn.jpg"));
@@ -180,6 +222,7 @@ public class GameMain extends JFrame implements ActionListener {
             for (int j = 0; j < 11; j++) {
                 map[i][j] = new JLabel(new ImageIcon("resource/rsz_coop.jpg"));
                 map[i][j].setBounds(50 + (j * 60), 100 + (i * 60), 60, 60);
+                map[i][j].setBorder(defaultBorder);
                 frame.add(map[i][j]);
             }
         }
@@ -213,20 +256,23 @@ public class GameMain extends JFrame implements ActionListener {
                 }
             }
         }
+        ketMoney.setText("  Money : " + Integer.toString(p.getMoney()));
+        ketWadahAir.setText("  Wadah Air : " + Integer.toString(p.getWadahAir()));
+        if (p.getTas().isEmpty()){
+            invLabel.setText("Inventory Kosong !");
+        }else{
+            StringBuilder isi = new StringBuilder();
+            for (int i = 0;i<p.getTas().size();i++){
+                isi.append(p.getTas().get(i).getClass().getSimpleName()+", ");
+            }
+            invLabel.setText("<html>Inventory : </br>"+isi.toString()+"</html>");
+        }
         first = false;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String inputString = this.input.getText();
-        inputString.strip();
-        if (inputString == "move down"){
-            System.out.println("masuk");
-        }else{
-            System.out.println("asu");
-        }
-        System.out.println(inputString.length());
-        g.play(inputString);
+        g.play(this.input.getText());
         printPeta();
     }
 }

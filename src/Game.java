@@ -96,90 +96,10 @@ public class Game{
 		}
 	}	
 
-	// public void printPeta(){
-
-	// 	petaTemp = new char[n][m];
-
-	// 	// for(int i=0;i<n;i++){
-	// 	// 	for(int j=0;j<m;j++){
-	// 	// 		petaTemp[i][j] = '/';
-	// 	// 	}
-	// 	// }
-
-	// 	for(int i=0;i<n;i++){
-	// 		for(int j=0;j<m;j++){
-	// 			// cout<<"Tipe pointer "<<i<<" "<<j<<" : "<<typeid(*peta[i][j]).name()<<endl;
-	// 			if(peta[i][j] instanceof Grassland){
-	//    				if(peta[i][j].getIsGrassExist()){
-	//    					petaTemp[i][j] = '#';
-	//    				} else{
-	//    					petaTemp[i][j] = '-';
-	//    				}
-	// 			} else if(peta[i][j] instanceof Barn){
-	// 				if(peta[i][j].getIsGrassExist()){
-	// 					petaTemp[i][j] = '@';
-	// 				} else{
-	// 					petaTemp[i][j] = 'x';
-	// 				}
-	// 			} else if(peta[i][j] instanceof Coop){
-	// 				if(peta[i][j].getIsGrassExist()){
-	// 					petaTemp[i][j] = '*';
-	// 				} else{
-	// 					petaTemp[i][j] = 'o';
-	// 				}
-	// 			} else if(peta[i][j] instanceof Truck){
-	// 				petaTemp[i][j] = 'T';
-	// 			} else if(peta[i][j] instanceof Mixer){
-	// 				petaTemp[i][j] = 'M';
-	// 			} else if(peta[i][j] instanceof Well){
-	// 				petaTemp[i][j] = 'W';
-	// 			}
-	// 		}
-	// 	}
-	// 	FarmAnimal AnimalTemp;
-	// 	int xtemp,ytemp;
-	// 	// cout<<"i = "<<ListFarmAnimal.size<<endl;
-	// 	for(int i=0;i<ListFarmAnimal.size();i++){
-			
-	// 		AnimalTemp = (ListFarmAnimal.get(i));
-	// 		xtemp = AnimalTemp.getX();
-	// 		ytemp = AnimalTemp.getY();
-
-	// 		// cout<<"i = "<<i<<" "<<typeid(AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
-	// 		// cout<<"i = "<<i<<" "<<typeid(&AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
-	// 		// cout<<"i = "<<i<<" "<<typeid(*AnimalTemp).name()<<"x = "<<xtemp<<" y = "<<ytemp<<endl;
-	// 		// cout<<"i = "<<typeid(Chicken).name()<<endl;
-			
-	// 		if(AnimalTemp instanceof Chicken){
-	// 			petaTemp[xtemp][ytemp] = 'A';
-	// 		} else if (AnimalTemp instanceof Duck){
-	// 			petaTemp[xtemp][ytemp] = 'D';
-	// 		} else if(AnimalTemp instanceof Buffalo){
-	// 			petaTemp[xtemp][ytemp] = 'B';
-	// 		} else if(AnimalTemp instanceof Sheep){
-	// 			petaTemp[xtemp][ytemp] = 'S';
-	// 		} else if(AnimalTemp instanceof Cow){
-	// 			petaTemp[xtemp][ytemp] = 'C';
-	// 		} else if(AnimalTemp instanceof Goat){
-	// 			petaTemp[xtemp][ytemp] = 'G';
-	// 		}
-	// 		// cout<<"Samp "<<i<<endl;
-	// 	}
-	// 	// cout<<"Sampe 2"<<endl;
-	// 	petaTemp[pemain.getPosisiX()][pemain.getPosisiY()] = 'P';
-	// 	for(int i=0;i<n;i++){
-	// 		for(int j=0;j<m;j++){
-	// 			System.out.println((petaTemp[i][j])+" ");
-	// 		}
-	// 		System.out.println();
-	// 	}
-	// }
 	public void play(String input){
-		System.out.println(input);
-		System.out.println(input.length());
 		boolean found;
 		int xtemp,ytemp,i;
-		if (input == "move up"){
+		if (input.equalsIgnoreCase("move up")){
 			if(isInRange(pemain.getPosisiX()-1,pemain.getPosisiY())){
 				if(isLand(pemain.getPosisiX()-1,pemain.getPosisiY())){
 					if(!peta[pemain.getPosisiX()-1][pemain.getPosisiY()].getIsObjectExist()){
@@ -189,7 +109,7 @@ public class Game{
 					}
 				}
 			}
-		}else if(input == "move left"){
+		}else if(input.equalsIgnoreCase("move left")){
 			if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()-1)){
 				if(isLand(pemain.getPosisiX(),pemain.getPosisiY()-1)){
 					if(!peta[pemain.getPosisiX()][pemain.getPosisiY()-1].getIsObjectExist()){
@@ -199,7 +119,7 @@ public class Game{
 					}
 				}
 			}
-		}else if(input == "move down"){
+		}else if(input.equalsIgnoreCase("move down")){
 			if(isInRange(pemain.getPosisiX()+1,pemain.getPosisiY())){
 				if(isLand(pemain.getPosisiX()+1,pemain.getPosisiY())){
 					if(!peta[pemain.getPosisiX()+1][pemain.getPosisiY()].getIsObjectExist()){
@@ -209,7 +129,7 @@ public class Game{
 					}				
 				}
 			}
-		}else if(input == "move right"){
+		}else if(input.equalsIgnoreCase("move right")){
 			if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()+1)){
 				if(isLand(pemain.getPosisiX(),pemain.getPosisiY()+1)){
 					if(!peta[pemain.getPosisiX()][pemain.getPosisiY()+1].getIsObjectExist()){
@@ -219,7 +139,7 @@ public class Game{
 					}
 				}
 			}
-		}else if(input == "talk up"){
+		}else if(input.equalsIgnoreCase("talk up")){
 			if(isInRange(pemain.getPosisiX()-1,pemain.getPosisiY())){
 				if(isLand(pemain.getPosisiX()-1,pemain.getPosisiY())){
 					if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()].getIsObjectExist()){
@@ -239,7 +159,7 @@ public class Game{
 					}
 				}
 			}
-		} else if(input == "talk left"){
+		} else if(input.equalsIgnoreCase("talk left")){
 			if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()-1)){
 				if(isLand(pemain.getPosisiX(),pemain.getPosisiY()-1)){
 					if(peta[pemain.getPosisiX()][pemain.getPosisiY()-1].getIsObjectExist()){
@@ -259,7 +179,7 @@ public class Game{
 					}
 				}
 			}
-		} else if(input == "talk down"){
+		} else if(input.equalsIgnoreCase("talk down")){
 			if(isInRange(pemain.getPosisiX()+1,pemain.getPosisiY())){
 				if(isLand(pemain.getPosisiX()+1,pemain.getPosisiY())){
 					if(peta[pemain.getPosisiX()+1][pemain.getPosisiY()].getIsObjectExist()){
@@ -279,7 +199,7 @@ public class Game{
 					}
 				}
 			}
-		} else if(input == "talk right"){
+		} else if(input.equalsIgnoreCase("talk right")){
 			if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()+1)){
 				if(isLand(pemain.getPosisiX(),pemain.getPosisiY()+1)){
 					if(peta[pemain.getPosisiX()][pemain.getPosisiY()+1].getIsObjectExist()){
@@ -299,7 +219,7 @@ public class Game{
 					}
 				}
 			}
-		} else if(input == "interact up"){
+		} else if(input.equalsIgnoreCase("interact up")){
 			if(isInRange(pemain.getPosisiX()-1,pemain.getPosisiY())){
                 if(isLand(pemain.getPosisiX()-1,pemain.getPosisiY())){
                     if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()].getIsObjectExist()){
@@ -328,11 +248,12 @@ public class Game{
                 }else if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()] instanceof Truck){
                     pemain.interact((Facility)peta[pemain.getPosisiX()-1][pemain.getPosisiY()]);
                 }else if (peta[pemain.getPosisiX()-1][pemain.getPosisiY()] instanceof Mixer){
+
                     pemain.interact((Facility)peta[pemain.getPosisiX()-1][pemain.getPosisiY()]);
                 }
             }
 
-		} else if(input == "interact left"){
+		} else if(input.equalsIgnoreCase("interact left")){
 			if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()-1)){
                 if(isLand(pemain.getPosisiX(),pemain.getPosisiY()-1)){
                     if(peta[pemain.getPosisiX()][pemain.getPosisiY()-1].getIsObjectExist()){
@@ -365,7 +286,7 @@ public class Game{
                 }
             }
 
-		} else if(input == "interact down"){
+		} else if(input.equalsIgnoreCase("interact down")){
 			if(isInRange(pemain.getPosisiX()+1,pemain.getPosisiY())){
                 if(isLand(pemain.getPosisiX()+1,pemain.getPosisiY())){
                     if(peta[pemain.getPosisiX()+1][pemain.getPosisiY()].getIsObjectExist()){
@@ -397,7 +318,7 @@ public class Game{
                     pemain.interact((Facility)peta[pemain.getPosisiX()+1][pemain.getPosisiY()]);
                 }
             }
-		} else if(input == "interact right"){
+		} else if(input.equalsIgnoreCase("interact right")){
 			if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()+1)){
                 if(isLand(pemain.getPosisiX(),pemain.getPosisiY()+1)){
                     if(peta[pemain.getPosisiX()][pemain.getPosisiY()+1].getIsObjectExist()){
@@ -429,7 +350,7 @@ public class Game{
                     pemain.interact((Facility)peta[pemain.getPosisiX()][pemain.getPosisiY()+1]);
                 }
             }
-		} else if(input == "kill up"){
+		} else if(input.equalsIgnoreCase("kill up")){
 			if(isInRange(pemain.getPosisiX()-1,pemain.getPosisiY())){
 				if(isLand(pemain.getPosisiX()-1,pemain.getPosisiY())){
 					if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()].getIsObjectExist()){
@@ -455,7 +376,7 @@ public class Game{
 					}
 				}
 			}
-		} else if(input == "kill left"){
+		} else if(input.equalsIgnoreCase("kill left")){
 			if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()-1)){
 				if(isLand(pemain.getPosisiX(),pemain.getPosisiY()-1)){
 					if(peta[pemain.getPosisiX()][pemain.getPosisiY()-1].getIsObjectExist()){
@@ -481,7 +402,7 @@ public class Game{
 					}
 				}
 			}
-		} else if(input == "kill down"){
+		} else if(input.equalsIgnoreCase("kill down")){
 			if(isInRange(pemain.getPosisiX()+1,pemain.getPosisiY())){
 				if(isLand(pemain.getPosisiX()+1,pemain.getPosisiY())){
 					if(peta[pemain.getPosisiX()+1][pemain.getPosisiY()].getIsObjectExist()){
@@ -507,7 +428,7 @@ public class Game{
 					}
 				}
 			}
-		} else if(input == "kill right"){
+		} else if(input.equalsIgnoreCase("kill right")){
 			if(isInRange(pemain.getPosisiX(),pemain.getPosisiY()+1)){
 				if(isLand(pemain.getPosisiX(),pemain.getPosisiY()+1)){
 					if(peta[pemain.getPosisiX()][pemain.getPosisiY()+1].getIsObjectExist()){
@@ -533,16 +454,8 @@ public class Game{
 					}
 				}
 			}
-		} else if(input == "grow"){
+		} else if(input.equalsIgnoreCase("grow")){
 			pemain.grow((Land)peta[pemain.getPosisiX()][pemain.getPosisiY()]);
-		} else if(input == "tutorial"){
-			tutorial();
-		} else if(input == "keterangan"){
-			keterangan();
-		} else if(input == "status"){
-			pemain.displayStatus(); 
-		} else if(input == "listCommand"){
-			listCommand();
 		} else{
 			System.out.println("input error");
 		}
@@ -600,6 +513,14 @@ public class Game{
 			if(AnimalTemp.getLapar()<=-5){
 				peta[AnimalTemp.getX()][AnimalTemp.getY()].setIsObjectExist(false);
 				ListFarmAnimal.remove(AnimalTemp);
+			}
+		}
+		for (int i = 0;i<n;i++){
+			for (int j = 0;j<m;j++){
+				if (peta[i][j] instanceof Truck){
+					Truck temp = (Truck)peta[i][j];
+					temp.minCD();
+				}
 			}
 		}
 	}
