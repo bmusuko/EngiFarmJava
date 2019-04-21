@@ -1,0 +1,6 @@
+<map id="model.farmAnimal.animal.chicken.Chicken" name="model.farmAnimal.animal.chicken.Chicken">
+<area shape="rect" id="node1" title=" " alt="" coords="205,336,427,472"/>
+<area shape="rect" id="node2" href="$classmodel_1_1farm_animal_1_1_farm_animal.html" title=" " alt="" coords="5,5,205,288"/>
+<area shape="rect" id="node3" href="$interfacemodel_1_1farm_animal_1_1egg_producing_animal_1_1_egg_producing_farm_animal.html" title=" " alt="" coords="229,86,403,207"/>
+<area shape="rect" id="node4" href="$interfacemodel_1_1farm_animal_1_1meat_producing_animal_1_1_meat_producing_farm_animal.html" title=" " alt="" coords="427,86,613,207"/>
+</map>

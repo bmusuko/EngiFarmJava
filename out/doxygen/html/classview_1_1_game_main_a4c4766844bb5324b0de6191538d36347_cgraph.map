@@ -1,0 +1,28 @@
+<map id="view.GameMain.keyPressed" name="view.GameMain.keyPressed">
+<area shape="rect" id="node1" title=" " alt="" coords="5,449,192,476"/>
+<area shape="rect" id="node2" href="$classcontrol_1_1_game.html#a52152f0ba1c3302b20966dc95b279fe6" title=" " alt="" coords="240,449,368,476"/>
+<area shape="rect" id="node3" href="$classcontrol_1_1_game.html#a5e1b2ee6ba37a9c39adae086660d015d" title=" " alt="" coords="753,5,915,32"/>
+<area shape="rect" id="node4" href="$classmodel_1_1player_1_1_player.html#a62cc46b8ec3525c73d0c6a0e187b1c3e" title=" " alt="" coords="433,348,635,375"/>
+<area shape="rect" id="node5" href="$classmodel_1_1player_1_1_player.html#a635c6e1ba0ccdcc6bba360df0511de8d" title=" " alt="" coords="432,399,636,425"/>
+<area shape="rect" id="node6" href="$classcontrol_1_1_game.html#a059941c79d858540f95413b64f998882" title=" " alt="" coords="463,449,605,476"/>
+<area shape="rect" id="node7" href="$classmodel_1_1cell_1_1_cell.html#ae4a57b5a6ddec2633ce9a7849fefe774" title=" " alt="" coords="445,501,623,542"/>
+<area shape="rect" id="node8" href="$classmodel_1_1cell_1_1_cell.html#ad66f3bd70ed5fb55f868280b667f1729" title=" " alt="" coords="745,57,923,98"/>
+<area shape="rect" id="node9" href="$classmodel_1_1player_1_1_player.html#a6aa73aab63db74eb5dfc0bd9484d03d9" title=" " alt="" coords="449,567,619,593"/>
+<area shape="rect" id="node10" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#a7d57138486408e75c6d77f9f6a543403" title=" " alt="" coords="719,123,949,149"/>
+<area shape="rect" id="node11" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#a0bcadad464c08db2fb686ece51a7b2ae" title=" " alt="" coords="719,589,949,616"/>
+<area shape="rect" id="node12" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#aa8e05da8b85ed1c12b97f45858f61cd7" title=" " alt="" coords="416,617,652,644"/>
+<area shape="rect" id="node13" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#ac58df79055da7c5d3dbd827d77cbca6b" title=" " alt="" coords="423,669,645,710"/>
+<area shape="rect" id="node14" href="$classmodel_1_1player_1_1_player.html#a2b1f56e99eeabf793eb0fdf8a043ba09" title=" " alt="" coords="737,727,931,753"/>
+<area shape="rect" id="node15" href="$classmodel_1_1player_1_1_player.html#a3aaf31420208f00388656fd63c2ee12f" title=" " alt="" coords="442,785,626,812"/>
+<area shape="rect" id="node17" href="$classmodel_1_1player_1_1_player.html#a1c2523f1a5ec20bb73ae441fd04d87b9" title=" " alt="" coords="450,847,618,873"/>
+<area shape="rect" id="node19" href="$classcontrol_1_1_game.html#a254ef8ee11e5d4286c12c55cf12a4e71" title=" " alt="" coords="457,247,611,273"/>
+<area shape="rect" id="node16" href="$interfacemodel_1_1farm_animal_1_1milk_producing_animal_1_1_milk_producing_farm_animal.html#a13aebd2b89d23c04b70bede05d81f0e7" title=" " alt="" coords="700,777,968,833"/>
+<area shape="rect" id="node18" href="$classmodel_1_1cell_1_1land_1_1_land.html#aebc5cff75d60ce49ddc827367b6168ce" title=" " alt="" coords="753,858,915,899"/>
+<area shape="rect" id="node20" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#ae30d6ac91fd7ae40fe11dc7e58462b5a" title=" " alt="" coords="723,174,945,215"/>
+<area shape="rect" id="node21" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#a28c99bc156fc47025542b9806cf6b3fb" title=" " alt="" coords="723,239,945,281"/>
+<area shape="rect" id="node22" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#a0268094da329bf51e86f078726a9cccf" title=" " alt="" coords="727,305,941,346"/>
+<area shape="rect" id="node23" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#a70718f7e1534438b4d5ec0a345a9369e" title=" " alt="" coords="723,371,945,397"/>
+<area shape="rect" id="node24" href="$classmodel_1_1cell_1_1_cell.html#a823417571e26a40e93ec9b8ea5486b41" title=" " alt="" coords="747,422,921,463"/>
+<area shape="rect" id="node25" href="$classmodel_1_1farm_animal_1_1_farm_animal.html#a6d58218b124f30cb7e042760b54d8494" title=" " alt="" coords="717,488,951,515"/>
+<area shape="rect" id="node26" href="$classmodel_1_1facility_1_1truck_1_1_truck.html#adc3537dd0cd2c49836fc64f2b53877fb" title=" " alt="" coords="729,539,939,565"/>
+</map>

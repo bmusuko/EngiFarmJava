@@ -1,0 +1,5 @@
+<map id="model.farmAnimal.animal.buffalo.Buffalo" name="model.farmAnimal.animal.buffalo.Buffalo">
+<area shape="rect" id="node1" title=" " alt="" coords="107,336,320,457"/>
+<area shape="rect" id="node2" href="$classmodel_1_1farm_animal_1_1_farm_animal.html" title=" " alt="" coords="5,5,205,288"/>
+<area shape="rect" id="node3" href="$interfacemodel_1_1farm_animal_1_1meat_producing_animal_1_1_meat_producing_farm_animal.html" title=" " alt="" coords="229,86,416,207"/>
+</map>
