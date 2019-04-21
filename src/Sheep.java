@@ -1,3 +1,6 @@
+/**
+ * @Class Sheep adalah turunan kelas FarmAnimal
+ */
 import java.util.*;
 
 

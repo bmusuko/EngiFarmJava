@@ -1,3 +1,6 @@
+/**
+ * @Class Well adalah turunan kelas Facility
+ */
 class Well extends Facility {
     Well(int X, int Y){
         super(X,Y);

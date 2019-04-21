@@ -1,6 +1,6 @@
 //package src.Product;
 /**
- * @Kelas SheepMeat merupakan hasil dari kelas Sheep
+ * @Class SheepMeat merupakan hasil dari kelas Sheep
  */
 
 //import java.util.*;

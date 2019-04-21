@@ -1,3 +1,6 @@
+/**
+ * @Class Goat adalah turunan kelas FarmAnimal
+ */
 import java.util.*;
 
 class Goat extends FarmAnimal implements MeatProducingFarmAnimal{

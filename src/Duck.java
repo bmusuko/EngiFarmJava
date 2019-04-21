@@ -1,3 +1,6 @@
+/**
+ * @Class Duck adalah FarmAnimal
+ */
 import java.util.*;
 
 

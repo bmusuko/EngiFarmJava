@@ -1,6 +1,6 @@
 //package src.Product;
 /**
- * @Kelas DuckEgg merupakan hasil dari kelas Duck
+ * @Class DuckEgg merupakan hasil dari kelas Duck
  */
 
 //import java.util.*;

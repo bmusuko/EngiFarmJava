@@ -1,3 +1,6 @@
+/**
+ * @Class Mixer adalah turunan kelas Facility
+ */
 import java.util.Scanner;
 import java.util.LinkedList;
 

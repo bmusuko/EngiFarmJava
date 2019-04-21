@@ -1,3 +1,6 @@
+/**
+ * @Class Buffalo adalah FarmAnimal
+ */
 import java.util.*;
 
 class Buffalo extends FarmAnimal implements MeatProducingFarmAnimal{

@@ -1,3 +1,6 @@
+/**
+ * @Class Truck adalah turunan kelas Facility
+ */
 // public class Truck implements Facility {
 //     public Truck(int X, int Y) {
 

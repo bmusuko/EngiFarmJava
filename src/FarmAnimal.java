@@ -1,4 +1,7 @@
 //package src.farmanimal;
+/**
+ * @Class FarmAnimal adalah kelas abstrack animal
+ */
 import java.util.*;
 
 abstract class FarmAnimal{
