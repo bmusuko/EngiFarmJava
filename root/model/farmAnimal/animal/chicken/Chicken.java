@@ -8,7 +8,7 @@ import model.farmProduct.meat.chickenMeat.ChickenMeat;
 import model.farmProduct.egg.chickenEgg.ChickenEgg;
 import java.util.*;
 
-public class Chicken extends FarmAnimal implements EggProducingFarmAnimal, MeatProducingFarmAnimal {
+public class Chicken extends FarmAnimal implements EggProducingFarmAnimal<ChickenEgg>, MeatProducingFarmAnimal<ChickenMeat> {
 	public Chicken(int x, int y) {
 		super(x, y, 5);
 	}
@@ -22,11 +22,11 @@ public class Chicken extends FarmAnimal implements EggProducingFarmAnimal, MeatP
 		}
 	}
 
-	public Product respondKill() {
+	public ChickenMeat respondKill() {
 		return (new ChickenMeat());
 	}
 
-	public void suara() {
-		System.out.println("Ptok Ptok Ptok");
+	public String suara() {
+		return (new String("ptok ptok"));
 	}
 }

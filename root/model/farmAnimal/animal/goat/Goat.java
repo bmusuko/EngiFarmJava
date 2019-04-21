@@ -8,7 +8,7 @@ import model.farmProduct.meat.goatMeat.GoatMeat;
 import model.farmProduct.milk.goatMilk.GoatMilk;
 import java.util.*;
 
-public class Goat extends FarmAnimal implements MilkProducingFarmAnimal, MeatProducingFarmAnimal {
+public class Goat extends FarmAnimal implements MilkProducingFarmAnimal<GoatMilk>, MeatProducingFarmAnimal<GoatMeat> {
 	public Goat(int x, int y) {
 		super(x, y, 10);
 	}
@@ -26,8 +26,8 @@ public class Goat extends FarmAnimal implements MilkProducingFarmAnimal, MeatPro
 		return (new GoatMeat());
 	}
 
-	public void suara() {
-		System.out.println("mbee mbee");
+	public String suara() {
+		return (new String("mbee mbee"));
 	}
 
 }

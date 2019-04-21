@@ -6,7 +6,7 @@ import model.farmProduct.Product;
 import model.farmProduct.meat.sheepMeat.SheepMeat;
 import java.util.*;
 
-public class Sheep extends FarmAnimal implements MeatProducingFarmAnimal {
+public class Sheep extends FarmAnimal implements MeatProducingFarmAnimal<SheepMeat>{
 	public Sheep(int x, int y) {
 		super(x, y, 12);
 	}
