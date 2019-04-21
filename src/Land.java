@@ -1,3 +1,6 @@
+/**
+ * @Class Land adalah turunan kelas Cell
+ */
 abstract class Land extends Cell{
     protected boolean isObjectExist;
     protected boolean isGrassExist;

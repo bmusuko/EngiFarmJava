@@ -1,3 +1,6 @@
+/**
+ * @Class Cell adalah kotak tanah
+ */
 abstract class Cell {
     protected int X;
     protected int Y;

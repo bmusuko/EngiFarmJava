@@ -1,3 +1,7 @@
+/**
+ * @Class Game adalah kelas controller
+ */
+
 import java.io.*; 
 import java.util.*;
 

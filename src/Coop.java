@@ -1,3 +1,6 @@
+/**
+ * @Class Coop adalah turunan dari land
+ */
 class Coop extends Land {
     Coop(int X, int Y, boolean object, boolean grass){
         super(X, Y, object, grass);

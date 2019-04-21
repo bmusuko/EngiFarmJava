@@ -1,0 +1,12 @@
+Player money test
+Player grow test
+Player tas test
+Player move test
+Player wadahAir test
+Player interact eggProducingAnimal test
+Player interact well test
+Wadah air anda sudah terisi penuh!
+Player interact milkProducingAnimal test
+Player interact mixer test
+Player interact truck test
+true

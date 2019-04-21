@@ -1,6 +1,6 @@
 //package src.Product;
 /**
- * @Kelas CowMeat merupakan hasil dari kelas Cow
+ * @Class CowMeat merupakan hasil dari kelas Cow
  */
 
 

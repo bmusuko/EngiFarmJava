@@ -1,3 +1,6 @@
+/**
+ * @Class GameMain adalah kelas view
+ */
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;

@@ -1,3 +1,6 @@
+/**
+ * @Class MilkProducingAnimal adalah intergaceproducinganimal
+ */
 import java.util.*;
 
 interface MilkProducingFarmAnimal{

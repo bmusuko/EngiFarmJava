@@ -1,3 +1,6 @@
+/**
+ * @Class Cow adalah FarmAnimal
+ */
 import java.util.*;
 
 

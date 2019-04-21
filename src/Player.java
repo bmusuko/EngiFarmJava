@@ -1,3 +1,6 @@
+/**
+ * @Class Player adalah turunan kelas real pemain
+ */
 import java.util.LinkedList;
 import java.util.ListIterator;
 

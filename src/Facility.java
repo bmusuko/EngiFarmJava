@@ -1,3 +1,6 @@
+/**
+ * @Class Facility adalah turunan dari cell
+ */
 abstract class Facility extends Cell{
 
     public Facility(int X, int Y){

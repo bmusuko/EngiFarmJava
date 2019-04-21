@@ -1,3 +1,6 @@
+/**
+ * @Class MeatProducingAnimal adalah intergaceproducinganimal
+ */
 import java.util.*;
 
 
