@@ -1,0 +1,38 @@
+BeefRolade value test
+true
+
+BuffaloMeat value test
+true
+
+Cheese value test
+true
+
+ChickenEgg value test
+true
+
+ChickenMeat value test
+true
+
+CowMeat value test
+true
+
+CowMilk value test
+true
+
+DuckEgg value test
+true
+
+DuckMeat value test
+true
+
+GoatMeat value test
+true
+
+GoatMilk value test
+true
+
+Martabak value test
+true
+
+SheepMeat value test
+true
