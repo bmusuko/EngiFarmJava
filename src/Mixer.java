@@ -2,8 +2,14 @@ import java.util.Scanner;
 import java.util.LinkedList;
 
 public class Mixer extends Facility {
+    private int pilihan;
     public Mixer(int x, int y) {
         super(x, y);
+        pilihan = 0;
+    }
+
+    public void setPilihan(int pilihan){
+        this.pilihan = pilihan;
     }
 
     public boolean isInventAvailable(LinkedList<Product> LP, Product P1, Product P2) {
@@ -50,19 +56,24 @@ public class Mixer extends Facility {
         for (int i = 0; i < LP.size(); i++) {
             if (!foundP1 && !foundP2) {
                 break;
-            } else if ((P1 instanceof ChickenEgg) && (LP.get(i) instanceof ChickenEgg) && foundP1) {
+            }
+            if ((P1 instanceof ChickenEgg) && (LP.get(i) instanceof ChickenEgg) && foundP1) {
                 foundP1 = false;
                 LP.remove(LP.get(i));
-            } else if ((P2 instanceof DuckEgg) && (LP.get(i) instanceof DuckEgg) && foundP2) {
+            }
+            if ((P2 instanceof DuckEgg) && (LP.get(i) instanceof DuckEgg) && foundP2) {
                 foundP2 = false;
                 LP.remove(LP.get(i));
-            } else if ((P1 instanceof CowMilk) && (LP.get(i) instanceof CowMilk) && foundP1) {
+            }
+            if ((P1 instanceof CowMilk) && (LP.get(i) instanceof CowMilk) && foundP1) {
                 foundP1 = false;
                 LP.remove(LP.get(i));
-            } else if ((P2 instanceof GoatMilk) && (LP.get(i) instanceof GoatMilk) && foundP2) {
+            }
+            if ((P2 instanceof GoatMilk) && (LP.get(i) instanceof GoatMilk) && foundP2) {
                 foundP2 = false;
                 LP.remove(LP.get(i));
-            } else if ((P2 instanceof CowMeat) && (LP.get(i) instanceof CowMeat) && foundP2) {
+            }
+            if ((P2 instanceof CowMeat) && (LP.get(i) instanceof CowMeat) && foundP2) {
                 foundP2 = false;
                 LP.remove(LP.get(i));
             }
@@ -104,17 +115,16 @@ public class Mixer extends Facility {
     }
 
     public void use(Player P) {
-        System.out.println("1. Martabak 2. Cheese 3. BeefRolade");
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        if (n == 1) {
+        System.out.println("masuk use mixer!");
+        if (pilihan == 1) {
+            System.out.println("masuk martabak");
             createMartabak(P.getTas());
-        } else if (n == 2) {
+        } else if (pilihan == 2) {
             createCheese(P.getTas());
-        } else if (n == 3) {
+        } else if (pilihan == 3) {
             createBeefRolade(P.getTas());
         }
-        sc.close();
+        this.pilihan = 0;
     }
 
     public boolean getIsGrassExist() {

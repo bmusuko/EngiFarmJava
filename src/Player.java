@@ -44,7 +44,7 @@ class Player{
 
     //Setter
     public void move(int param){
-        // 1 naik, 2 turun, 3 kiri, 4 kanan
+        //1 naik, 3 turun, 4 kiri, 2 kanan
         switch(param){
             case 1:
                 this.posisiX--;

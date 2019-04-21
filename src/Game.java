@@ -9,6 +9,16 @@ public class Game{
 	private int n;
 	private int m;
 	private Player pemain;
+	private int mixerInput;
+	private Mixer tempMixer;
+
+	public void setMixerInput(int mix){
+		this.mixerInput = mix;
+	}
+
+	public int getMixerInput(){
+		return this.mixerInput;
+	}
 
 	public Player getPlayer(){
 		return pemain;
@@ -90,7 +100,7 @@ public class Game{
 				ListFarmAnimal.add(new Goat(x,y));
 				peta[x][y].setIsObjectExist(true);
 			} else if (c == 'P'){
-				peta[x][y].setIsObjectExist(false);
+				peta[x][y].setIsObjectExist(true);
 				pemain = new Player(x,y);
 			}
 		}
@@ -248,7 +258,8 @@ public class Game{
                 }else if(peta[pemain.getPosisiX()-1][pemain.getPosisiY()] instanceof Truck){
                     pemain.interact((Facility)peta[pemain.getPosisiX()-1][pemain.getPosisiY()]);
                 }else if (peta[pemain.getPosisiX()-1][pemain.getPosisiY()] instanceof Mixer){
-
+					tempMixer = (Mixer)peta[pemain.getPosisiX()-1][pemain.getPosisiY()];
+					tempMixer.setPilihan(getMixerInput());
                     pemain.interact((Facility)peta[pemain.getPosisiX()-1][pemain.getPosisiY()]);
                 }
             }
@@ -282,6 +293,8 @@ public class Game{
                 }else if(peta[pemain.getPosisiX()][pemain.getPosisiY()-1] instanceof Truck){
                     pemain.interact((Facility)peta[pemain.getPosisiX()][pemain.getPosisiY()-1]);
                 }else if (peta[pemain.getPosisiX()][pemain.getPosisiY()-1] instanceof Mixer){
+					tempMixer = (Mixer)peta[pemain.getPosisiX()][pemain.getPosisiY()-1];
+					tempMixer.setPilihan(getMixerInput());
                     pemain.interact((Facility)peta[pemain.getPosisiX()][pemain.getPosisiY()-1]);
                 }
             }
@@ -315,6 +328,8 @@ public class Game{
                 }else if(peta[pemain.getPosisiX()+1][pemain.getPosisiY()] instanceof Truck){
                     pemain.interact((Facility)peta[pemain.getPosisiX()+1][pemain.getPosisiY()]);
                 }else if (peta[pemain.getPosisiX()+1][pemain.getPosisiY()] instanceof Mixer){
+					tempMixer = (Mixer)peta[pemain.getPosisiX()+1][pemain.getPosisiY()];
+					tempMixer.setPilihan(getMixerInput());
                     pemain.interact((Facility)peta[pemain.getPosisiX()+1][pemain.getPosisiY()]);
                 }
             }
@@ -347,6 +362,8 @@ public class Game{
                 }else if(peta[pemain.getPosisiX()][pemain.getPosisiY()+1] instanceof Truck){
                     pemain.interact((Facility)peta[pemain.getPosisiX()][pemain.getPosisiY()+1]);
                 }else if (peta[pemain.getPosisiX()][pemain.getPosisiY()+1] instanceof Mixer){
+					tempMixer = (Mixer)peta[pemain.getPosisiX()][pemain.getPosisiY()+1];
+					tempMixer.setPilihan(getMixerInput());
                     pemain.interact((Facility)peta[pemain.getPosisiX()][pemain.getPosisiY()+1]);
                 }
             }
@@ -367,7 +384,6 @@ public class Game{
 									Product temp = ((MeatProducingFarmAnimal)AnimalTemp).respondKill();
 									ListFarmAnimal.remove(AnimalTemp);
 									pemain.addElTas(temp);
-									//cout<<temp.getCode()<<" "<<temp.getHarga()<<endl;
 								}
 								found = true;
 							}
@@ -393,7 +409,6 @@ public class Game{
 									Product temp = ((MeatProducingFarmAnimal)AnimalTemp).respondKill();
 									ListFarmAnimal.remove(AnimalTemp);
 									pemain.addElTas(temp);
-									//cout<<temp.getCode()<<" "<<temp.getHarga()<<endl;
 								}
 								found = true;
 							}
@@ -419,7 +434,6 @@ public class Game{
 									Product temp = ((MeatProducingFarmAnimal)AnimalTemp).respondKill();
 									ListFarmAnimal.remove(AnimalTemp);
 									pemain.addElTas(temp);
-									//cout<<temp.getCode()<<" "<<temp.getHarga()<<endl;
 								}
 								found = true;
 							}
@@ -445,7 +459,6 @@ public class Game{
 									Product temp = ((MeatProducingFarmAnimal)AnimalTemp).respondKill();
 									ListFarmAnimal.remove(AnimalTemp);
 									pemain.addElTas(temp);
-									//cout<<temp.getCode()<<" "<<temp.getHarga()<<endl;
 								}
 								found = true;
 							}
@@ -456,8 +469,6 @@ public class Game{
 			}
 		} else if(input.equalsIgnoreCase("grow")){
 			pemain.grow((Land)peta[pemain.getPosisiX()][pemain.getPosisiY()]);
-		} else{
-			System.out.println("input error");
 		}
 		nextTick();
 	}
@@ -523,48 +534,6 @@ public class Game{
 				}
 			}
 		}
-	}
-	public void listCommand(){
-		System.out.println("!--- LIST COMMAND ---!");
-		System.out.println("talk up");
-		System.out.println("talk left");
-		System.out.println("talk right");
-		System.out.println("talk down");
-		System.out.println("interact up");
-		System.out.println("interact left");
-		System.out.println("interact right");
-		System.out.println("interact down");
-		System.out.println("kill up");
-		System.out.println("kill left");
-		System.out.println("kill right");
-		System.out.println("kill down");
-		System.out.println("grow");
-		System.out.println("status");
-		System.out.println("tutorial");
-		System.out.println("keterangan");
-		System.out.println("listCommand");
-		System.out.println("exit");
-	}
-
-	public void tutorial(){
-		//System.out.println("!--- TUTORIAL ---!"<<endl<<endl;
-		keterangan();
-		listCommand();
-	}
-
-	public void keterangan(){
-		// cout<<"--- KETERANGAN ---"<<endl;
-		// cout<<"A : Ayam"<<endl;
-		// cout<<"D : Bebek"<<endl;
-		// cout<<"B : Kerbau"<<endl;
-		// cout<<"S : Domba"<<endl;
-		// cout<<"C : Sapi"<<endl;
-		// cout<<"G : Kambing"<<endl;
-		// cout<<"P : Player"<<endl;
-		// cout<<"- : Grassland"<<endl;
-		// cout<<"x : Barn"<<endl;
-		// cout<<"o : Coop"<<endl;
-		// cout<<"*,@,# : Land dengan rumput"<<endl<<endl;
 	}
 
 	public boolean isInRange(int x,int y){
