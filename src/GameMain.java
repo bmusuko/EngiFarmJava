@@ -15,7 +15,7 @@ import javax.swing.JWindow;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 
-import com.sun.java.swing.plaf.windows.resources.windows;
+//import com.sun.java.swing.plaf.windows.resources.windows;
 
 /**
  * Main class
