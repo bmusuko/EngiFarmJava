@@ -15,8 +15,8 @@ public class Sheep extends FarmAnimal implements MeatProducingFarmAnimal {
 		return (new SheepMeat());
 	}
 
-	public void suara() {
-		System.out.println("mbe be be");
+	public String suara() {
+		return (new String("mbe be be"));
 	}
 
 }
