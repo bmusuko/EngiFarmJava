@@ -11,6 +11,6 @@ public class DuckEggTest {
     @Test
     public void DuckEggValueTest() {
         System.out.println("DuckEgg value test");
-        assertEquals(M.getHarga(), 3000);
+        assertEquals(M.getHarga(), 20000);
     }
 }

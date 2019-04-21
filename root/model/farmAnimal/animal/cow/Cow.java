@@ -8,12 +8,12 @@ import model.farmProduct.meat.cowMeat.CowMeat;
 import model.farmProduct.milk.cowMilk.CowMilk;
 import java.util.*;
 
-public class Cow extends FarmAnimal implements MilkProducingFarmAnimal, MeatProducingFarmAnimal {
+public class Cow extends FarmAnimal implements MilkProducingFarmAnimal<CowMilk>, MeatProducingFarmAnimal<CowMeat> {
 	public Cow(int x, int y) {
 		super(x, y, 15);
 	}
 
-	public Product respondInteract() {
+	public CowMilk respondInteract() {
 		if (super.getHasilProduct()) {
 			super.setHasilProduct(false);
 			return (new CowMilk());
@@ -22,12 +22,12 @@ public class Cow extends FarmAnimal implements MilkProducingFarmAnimal, MeatProd
 		}
 	}
 
-	public Product respondKill() {
+	public CowMeat respondKill() {
 		return (new CowMeat());
 	}
 
-	public void suara() {
-		System.out.println("Moo Moo");
+	public String suara() {
+		return (new String("moo moo"));
 	}
 
 }

@@ -1,0 +1,7 @@
+<map id="model.cell.land.Land" name="model.cell.land.Land">
+<area shape="rect" id="node1" title=" " alt="" coords="215,263,357,428"/>
+<area shape="rect" id="node3" href="$classmodel_1_1cell_1_1land_1_1barn_1_1_barn.html" title=" " alt="" coords="5,483,175,575"/>
+<area shape="rect" id="node4" href="$classmodel_1_1cell_1_1land_1_1coop_1_1_coop.html" title=" " alt="" coords="199,483,373,575"/>
+<area shape="rect" id="node5" href="$classmodel_1_1cell_1_1land_1_1grass_land_1_1_grassland.html" title=" " alt="" coords="397,476,575,583"/>
+<area shape="rect" id="node2" href="$classmodel_1_1cell_1_1_cell.html" title=" " alt="" coords="217,5,355,215"/>
+</map>

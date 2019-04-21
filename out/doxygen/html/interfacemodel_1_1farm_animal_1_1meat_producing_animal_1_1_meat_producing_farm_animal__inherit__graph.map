@@ -1,0 +1,9 @@
+<map id="model.farmAnimal.meatProducingAnimal.MeatProducingFarmAnimal&lt; T extends Product &gt;" name="model.farmAnimal.meatProducingAnimal.MeatProducingFarmAnimal&lt; T extends Product &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="462,5,685,112"/>
+<area shape="rect" id="node2" href="$classmodel_1_1farm_animal_1_1animal_1_1buffalo_1_1_buffalo.html" title=" " alt="" coords="5,167,157,303"/>
+<area shape="rect" id="node3" href="$classmodel_1_1farm_animal_1_1animal_1_1chicken_1_1_chicken.html" title=" " alt="" coords="181,160,349,311"/>
+<area shape="rect" id="node4" href="$classmodel_1_1farm_animal_1_1animal_1_1cow_1_1_cow.html" title=" " alt="" coords="373,167,576,303"/>
+<area shape="rect" id="node5" href="$classmodel_1_1farm_animal_1_1animal_1_1duck_1_1_duck.html" title=" " alt="" coords="601,160,743,311"/>
+<area shape="rect" id="node6" href="$classmodel_1_1farm_animal_1_1animal_1_1goat_1_1_goat.html" title=" " alt="" coords="768,160,907,311"/>
+<area shape="rect" id="node7" href="$classmodel_1_1farm_animal_1_1animal_1_1sheep_1_1_sheep.html" title=" " alt="" coords="931,167,1079,303"/>
+</map>

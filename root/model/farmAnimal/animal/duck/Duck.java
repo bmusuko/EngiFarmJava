@@ -8,7 +8,7 @@ import model.farmProduct.meat.duckMeat.DuckMeat;
 import model.farmProduct.egg.duckEgg.DuckEgg;
 import java.util.*;
 
-public class Duck extends FarmAnimal implements EggProducingFarmAnimal, MeatProducingFarmAnimal {
+public class Duck extends FarmAnimal implements EggProducingFarmAnimal<DuckEgg>, MeatProducingFarmAnimal<DuckMeat> {
 	public Duck(int x, int y) {
 		super(x, y, 6);
 	}
@@ -26,8 +26,8 @@ public class Duck extends FarmAnimal implements EggProducingFarmAnimal, MeatProd
 		return (new DuckMeat());
 	}
 
-	public void suara() {
-		System.out.println("Kwek Kwek Kwek");
+	public String suara() {
+		return (new String("kwek kwek"));
 	}
 
 }

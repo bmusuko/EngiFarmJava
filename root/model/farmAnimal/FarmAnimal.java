@@ -16,7 +16,7 @@ abstract public class FarmAnimal {
 		this.laparMax = lapar;
 	}
 
-	abstract public void suara();
+	abstract public String suara();
 
 	public void move(int x, int y) {
 		this.x = x;
