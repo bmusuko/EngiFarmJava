@@ -80,12 +80,12 @@ public class GameMain extends JFrame implements KeyListener,ActionListener{
     private boolean first;
     Vector<ImageIcon> imageBackground;
     Vector<JLabel> dummyFarmAnimal;
-    JLabel title, ketJLabel, ketMoney, ketWadahAir, invLabel, dialogbox, ipt,labelMixer;
+    JLabel title, ketJLabel, ketMoney, ketWadahAir, invLabel, dialogbox, ipt,labelMixer,suaraHewan;
     JFrame frame;
     JTextArea input;
     JButton inputMixer;
     Border defaultBorder;
-    JDialog dialogMixer;
+    JDialog dialogMixer,dialogTalk;
     JRadioButton r1,r2,r3;
     ButtonGroup pilihanMixer;
 
@@ -131,6 +131,19 @@ public class GameMain extends JFrame implements KeyListener,ActionListener{
         dialogMixer.add(r2);
         dialogMixer.add(r3);
         dialogMixer.add(inputMixer);
+
+        dialogTalk = new JDialog(frame,"Suara!");
+        dialogTalk.setVisible(false);
+        dialogTalk.setLayout(null);
+        dialogTalk.setBounds(600, 350, 200, 70);
+        dialogTalk.setResizable(true);
+
+        suaraHewan = new JLabel();
+        suaraHewan.setLayout(null);
+        suaraHewan.setBounds(20, 0, 180, 30);
+        suaraHewan.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+        dialogTalk.add(suaraHewan);
+        
 
         defaultBorder = BorderFactory.createLineBorder(Color.BLACK, 1);
         input = new JTextArea();
@@ -347,6 +360,10 @@ public class GameMain extends JFrame implements KeyListener,ActionListener{
             invLabel.setText("<html>Inventory : </br>" + isi.toString() + "</html>");
         }
         first = false;
+    }
+
+    public void setLabel(JLabel label,String isi){
+        label.setText(isi);
     }
 
     @Override
