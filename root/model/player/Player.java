@@ -110,18 +110,4 @@ public class Player {
             System.out.println("Wadah air anda kosong!");
         }
     }
-
-    public void displayStatus() {
-        System.out.println("Wadah Air : " + this.wadahAir);
-        System.out.println("Money : " + this.money);
-        if (this.tas.isEmpty()) {
-            System.out.println("Inventory Kosong");
-        } else {
-            ListIterator<Product> iter = tas.listIterator(0);
-            System.out.println("Inventory : ");
-            while (iter.hasNext()) {
-                System.out.println(iter.next().getClass().getSimpleName());
-            }
-        }
-    }
 }

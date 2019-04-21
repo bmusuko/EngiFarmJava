@@ -57,7 +57,8 @@ import model.farmProduct.martabak.*;
 import model.player.*;
 
 
- /* Main class
+ /**
+ * Main class
  * 
  * @author Putu Gde
  * @author Hilmi Naufal
@@ -66,7 +67,7 @@ import model.player.*;
  */
 @SuppressWarnings("serial")
 
-public class GameMain extends JFrame implements KeyListener {
+public class GameMain extends JFrame implements KeyListener,ActionListener{
     /**
      * main program, untuk tampilkan GUI
      */
@@ -75,18 +76,57 @@ public class GameMain extends JFrame implements KeyListener {
     private boolean first;
     Vector<ImageIcon> imageBackground;
     Vector<JLabel> dummyFarmAnimal;
-    JLabel title, ketJLabel, ketMoney, ketWadahAir, invLabel, dialogbox, ipt;
+    JLabel title, ketJLabel, ketMoney, ketWadahAir, invLabel, dialogbox, ipt,labelMixer;
     JFrame frame;
     JTextArea input;
+    JButton inputMixer;
     Border defaultBorder;
-    JWindow w;
+    JDialog dialogMixer;
+    JRadioButton r1,r2,r3;
+    ButtonGroup pilihanMixer;
 
-    public GameMain() throws Exception {
+    public GameMain() throws Exception,InterruptedException {
         g = new Game();
         frame = new JFrame();
         imageBackground = new Vector<ImageIcon>();
         dummyFarmAnimal = new Vector<JLabel>();
         first = true;
+
+        pilihanMixer = new ButtonGroup();
+        r1=new JRadioButton("1) Martabak");    
+        r2=new JRadioButton("2) Cheese"); 
+        r3=new JRadioButton("3) Beef Rolade");
+        pilihanMixer.add(r1);
+        pilihanMixer.add(r2);
+        pilihanMixer.add(r3);
+        r1.setLayout(null);  
+        r2.setLayout(null);  
+        r3.setLayout(null); 
+        r1.setBounds(25, 35, 250, 25); 
+        r2.setBounds(25, 70, 250, 25); 
+        r3.setBounds(25, 105, 250, 25); 
+
+        labelMixer = new JLabel("Pilih Side Product yang ingin dibuat !");
+        labelMixer.setLayout(null);
+        labelMixer.setBounds(25,0,250,25);
+
+        dialogMixer = new JDialog(frame,"Pilih Side Product !");
+        dialogMixer.setVisible(false);
+        dialogMixer.setLayout(null);
+        dialogMixer.setBounds(600, 350, 300, 210);
+        dialogMixer.setResizable(false);
+        dialogMixer.add(labelMixer);
+        dialogMixer.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        inputMixer = new JButton("OK");
+        inputMixer.setLayout(null);
+        inputMixer.setBounds(110, 140, 70, 25);
+        inputMixer.addActionListener(this);
+        
+        dialogMixer.add(r1);
+        dialogMixer.add(r2);
+        dialogMixer.add(r3);
+        dialogMixer.add(inputMixer);
 
         defaultBorder = BorderFactory.createLineBorder(Color.BLACK, 1);
         input = new JTextArea();
@@ -96,7 +136,7 @@ public class GameMain extends JFrame implements KeyListener {
         input.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
         frame.add(input);
 
-        ketJLabel = new JLabel(new ImageIcon("view/resource/ket.png"));
+        ketJLabel = new JLabel(new ImageIcon("resource/ket.png"));
         ketJLabel.setLayout(null);
         ketJLabel.setBounds(980, 100, 250, 600);
         frame.add(ketJLabel);
@@ -129,30 +169,30 @@ public class GameMain extends JFrame implements KeyListener {
         ipt.setFont(new Font("Comic Sans MS", Font.PLAIN, 28));
         frame.add(ipt);
 
-        imageBackground.add(new ImageIcon("view/resource/rsz_coop.jpg"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_coopgrass.jpg"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_barn.jpg"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_barngrass.jpg"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_grassland.jpg"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_grasslandgrass.jpg"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_truck.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_well.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_mixer.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_barn.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_barngrass.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_grassland.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_grasslandgrass.jpg"));
+        imageBackground.add(new ImageIcon("resource/rsz_truck.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_well.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_mixer.png"));
 
-        imageBackground.add(new ImageIcon("view/resource/rsz_buffalo.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_buffalohungry.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_chicken.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_chickenhungry.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_cow.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_cowhungry.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_duck.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_duckhungry.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_goat.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_goathungry.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_sheep.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_sheephungry.png"));
-        imageBackground.add(new ImageIcon("view/resource/rsz_player.png"));
-        title = new JLabel(new ImageIcon("view/resource/judul.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_buffalo.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_buffalohungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_chicken.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_chickenhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_cow.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_cowhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_duck.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_duckhungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_goat.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_goathungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_sheep.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_sheephungry.png"));
+        imageBackground.add(new ImageIcon("resource/rsz_player.png"));
+        title = new JLabel(new ImageIcon("resource/judul.png"));
         map = new JLabel[10][11];
         printPeta();
         frame.revalidate();
@@ -189,7 +229,7 @@ public class GameMain extends JFrame implements KeyListener {
         dummyFarmAnimal = new Vector<JLabel>();
 
         for (int i = 0; i < ListFarmAnimal.size() + 1; i++) {
-            dummyFarmAnimal.add(new JLabel(new ImageIcon("view/resource/rsz_coop.jpg")));
+            dummyFarmAnimal.add(new JLabel(new ImageIcon("resource/rsz_coop.jpg")));
             dummyFarmAnimal.get(i).setBounds(50, 100, 60, 60);
             frame.add(dummyFarmAnimal.get(i));
         }
@@ -255,7 +295,7 @@ public class GameMain extends JFrame implements KeyListener {
         }
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 11; j++) {
-                map[i][j] = new JLabel(new ImageIcon("view/resource/rsz_coop.jpg"));
+                map[i][j] = new JLabel(new ImageIcon("resource/rsz_coop.jpg"));
                 map[i][j].setBounds(50 + (j * 60), 100 + (i * 60), 60, 60);
                 map[i][j].setBorder(defaultBorder);
                 frame.add(map[i][j]);
@@ -313,8 +353,19 @@ public class GameMain extends JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER){
-            g.play(this.input.getText());
-            printPeta();   
+            String masukan = this.input.getText();
+            if ((masukan.equalsIgnoreCase("interact up")) && (g.getCell()[g.getPlayer().getPosisiX()-1][g.getPlayer().getPosisiY()] instanceof Mixer)){
+                dialogMixer.setVisible(true);
+            }else if ((masukan.equalsIgnoreCase("interact left"))&&(g.getCell()[g.getPlayer().getPosisiX()][g.getPlayer().getPosisiY()-1] instanceof Mixer)){
+                dialogMixer.setVisible(true);
+            }else if ((masukan.equalsIgnoreCase("interact down")) && (g.getCell()[g.getPlayer().getPosisiX()+1][g.getPlayer().getPosisiY()] instanceof Mixer)){
+                dialogMixer.setVisible(true);
+            }else if ((masukan.equalsIgnoreCase("interact right")) && (g.getCell()[g.getPlayer().getPosisiX()][g.getPlayer().getPosisiY()+1] instanceof Mixer)){
+                dialogMixer.setVisible(true);
+            }else{  
+                g.play(masukan);
+                printPeta();   
+            }
         }
     }
 
@@ -323,5 +374,22 @@ public class GameMain extends JFrame implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_ENTER){
             input.setText(null); 
         }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (r1.isSelected()){
+            g.setMixerInput(1);
+        }else if (r2.isSelected()){
+            g.setMixerInput(2);
+        }else if (r3.isSelected()){
+            g.setMixerInput(3);
+        }
+        String temp = input.getText();
+        temp = temp.substring(0, temp.length() - 1);
+        g.play(temp);
+        printPeta();  
+        input.setText(null);
+        dialogMixer.setVisible(false);
     }
 }
