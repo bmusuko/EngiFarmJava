@@ -35,20 +35,15 @@ public class PlayerTest {
         System.out.println("Player tas test");
         ChickenEgg CE = new ChickenEgg();
         CowMilk CM = new CowMilk();
-        P.addElTas(new ChickenEgg());
-        P.addElTas(new ChickenEgg());
+        P.addElTas(CE);
+        P.addElTas(CE);
         for (int i = 0; i < P.getTas().size(); i++) {
             assertEquals(CE.getClass().getSimpleName(), P.getIsiTas(i).getClass().getSimpleName());
         }
         P.delElTas(CE);
         P.delElTas(CE);
-        P.addElTas(new CowMilk());
-        // assertEquals(CM.getClass().getSimpleName(),
-        // P.getIsiTas(0).getClass().getSimpleName());
-        for (int i = 0; i < P.getTas().size(); i++) {
-            System.out.println(P.getIsiTas(i).getClass().getSimpleName());
-        }
-        P.delElTas(CM);
+        P.addElTas(CM);
+        assertEquals(CM.getClass().getSimpleName(), P.getIsiTas(0).getClass().getSimpleName());
     }
 
     @Test
@@ -111,11 +106,12 @@ public class PlayerTest {
     public void facilityInteractMixerTest() {
         System.out.println("Player interact mixer test");
         Mixer M = new Mixer(2, 1);
-        P.addElTas(new DuckEgg());
         P.addElTas(new ChickenEgg());
+        P.addElTas(new DuckEgg());
+        M.setPilihan(1);
         P.interact(M);
         assertEquals(new Martabak().getClass().getSimpleName(), P.getIsiTas(0).getClass().getSimpleName());
-        P.delElTas(new Martabak());
+        // P.delElTas(P.getIsiTas(0));
     }
 
     @Test

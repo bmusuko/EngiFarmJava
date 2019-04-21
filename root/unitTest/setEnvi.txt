@@ -12,3 +12,11 @@ java unitTest.facility.FacilityTestRunner
 FarmAnimalTestRunner.java command:
 javac unitTest\farmAnimal\BuffaloTest.java unitTest\farmAnimal\ChickenTest.java unitTest\farmAnimal\CowTest.java unitTest\farmAnimal\DuckTest.java unitTest\farmAnimal\GoatTest.java unitTest\farmAnimal\SheepTest.java unitTest\farmAnimal\FarmAnimalTestRunner.java
 java unitTest.farmAnimal.FarmAnimalTestRunner
+
+FarmProductTestRunner.java command:
+javac unitTest\farmProduct\BeefRoladeTest.java unitTest\farmProduct\BuffaloMeatTest.java unitTest\farmProduct\CheeseTest.java unitTest\farmProduct\ChickenEggTest.java unitTest\farmProduct\ChickenMeatTest.java unitTest\farmProduct\CowMeatTest.java unitTest\farmProduct\CowMilkTest.java unitTest\farmProduct\DuckEggTest.java unitTest\farmProduct\DuckMeatTest.java unitTest\farmProduct\GoatMeatTest.java unitTest\farmProduct\GoatMilkTest.java unitTest\farmProduct\MartabakTest.java unitTest\farmProduct\SheepMeatTest.java unitTest\farmProduct\FarmProductTestRunner.java
+java unitTest.farmProduct.FarmProductTestRunner
+
+PlayerTestRunner.java command:
+javac unitTest\player\PlayerTest.java unitTest\player\PlayerTestRunner.java
+java unitTest.player.PlayerTestRunner

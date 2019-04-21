@@ -16,12 +16,13 @@ import java.util.LinkedList;
 
 public class Mixer extends Facility {
     private int pilihan;
+
     public Mixer(int x, int y) {
         super(x, y);
         pilihan = 0;
     }
 
-    public void setPilihan(int pilihan){
+    public void setPilihan(int pilihan) {
         this.pilihan = pilihan;
     }
 
@@ -34,29 +35,22 @@ public class Mixer extends Facility {
             }
             if ((P1 instanceof ChickenEgg && P2 instanceof DuckEgg) && (LP.get(i) instanceof ChickenEgg) && !foundP1) {
                 foundP1 = true;
-                continue;
-            } else if ((P1 instanceof ChickenEgg && P2 instanceof DuckEgg) && (LP.get(i) instanceof DuckEgg)
-                    && !foundP2) {
+            }
+            if ((P1 instanceof ChickenEgg && P2 instanceof DuckEgg) && (LP.get(i) instanceof DuckEgg) && !foundP2) {
                 foundP2 = true;
-                continue;
             }
 
             if ((P1 instanceof CowMilk && P2 instanceof GoatMilk) && (LP.get(i) instanceof CowMilk) && !foundP1) {
                 foundP1 = true;
-                continue;
-            } else if ((P1 instanceof CowMilk && P2 instanceof GoatMilk) && LP.get(i) instanceof GoatMilk && !foundP2) {
+            }
+            if ((P1 instanceof CowMilk && P2 instanceof GoatMilk) && LP.get(i) instanceof GoatMilk && !foundP2) {
                 foundP2 = true;
-                continue;
             }
             if ((P1 instanceof ChickenEgg && P2 instanceof CowMeat) && (LP.get(i) instanceof ChickenEgg) && !foundP1) {
                 foundP1 = true;
-                continue;
-            } else if ((P1 instanceof ChickenEgg && P2 instanceof CowMeat) && (LP.get(i) instanceof CowMeat)
-                    && !foundP2) {
+            }
+            if ((P1 instanceof ChickenEgg && P2 instanceof CowMeat) && (LP.get(i) instanceof CowMeat) && !foundP2) {
                 foundP2 = true;
-                continue;
-            } else {
-                continue;
             }
         }
         return foundP1 && foundP2;
@@ -128,9 +122,7 @@ public class Mixer extends Facility {
     }
 
     public void use(Player P) {
-        System.out.println("masuk use mixer!");
         if (pilihan == 1) {
-            System.out.println("masuk martabak");
             createMartabak(P.getTas());
         } else if (pilihan == 2) {
             createCheese(P.getTas());
