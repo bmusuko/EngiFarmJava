@@ -8,14 +8,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.*;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JWindow;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
-
-import com.sun.java.swing.plaf.windows.resources.windows;
+import javax.swing.plaf.basic.BasicSplitPaneUI.KeyboardEndHandler;
 
 /**
  * Main class
@@ -27,7 +28,7 @@ import com.sun.java.swing.plaf.windows.resources.windows;
  */
 @SuppressWarnings("serial")
 
-public class GameMain extends JFrame implements ActionListener {
+public class GameMain extends JFrame implements KeyListener {
     /**
      * main program, untuk tampilkan GUI
      */
@@ -36,10 +37,9 @@ public class GameMain extends JFrame implements ActionListener {
     private boolean first;
     Vector<ImageIcon> imageBackground;
     Vector<JLabel> dummyFarmAnimal;
-    JLabel title,ketJLabel,ketMoney,ketWadahAir,invLabel,dialogbox;
+    JLabel title, ketJLabel, ketMoney, ketWadahAir, invLabel, dialogbox, ipt;
     JFrame frame;
     JTextArea input;
-    JButton inputButton, martabakBtn, cheeseBtn, beefRoladeBtn;
     Border defaultBorder;
     JWindow w;
 
@@ -53,14 +53,10 @@ public class GameMain extends JFrame implements ActionListener {
         defaultBorder = BorderFactory.createLineBorder(Color.BLACK, 1);
         input = new JTextArea();
         input.setLayout(null);
-        input.setBounds(50, 725, 500, 25);
+        input.setBounds(210, 725, 500, 25);
+        input.addKeyListener(this);
+        input.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
         frame.add(input);
-
-        inputButton = new JButton("Input!");
-        inputButton.setLayout(null);
-        inputButton.setBounds(560, 725, 150, 25);
-        inputButton.addActionListener(this);
-        frame.add(inputButton);
 
         ketJLabel = new JLabel(new ImageIcon("resource/ket.png"));
         ketJLabel.setLayout(null);
@@ -75,11 +71,6 @@ public class GameMain extends JFrame implements ActionListener {
         ketMoney.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
         frame.add(ketMoney);
 
-        // w = new JWindow();
-        // dialogbox = new JLabel("Silahkan pilih ingin side product apa?");
-        // martabakBtn = new Button()
-        
-
         ketWadahAir = new JLabel();
         ketWadahAir.setLayout(null);
         ketWadahAir.setBorder(borderBLCK);
@@ -90,9 +81,15 @@ public class GameMain extends JFrame implements ActionListener {
         invLabel = new JLabel();
         invLabel.setLayout(null);
         invLabel.setBorder(borderBLCK);
-        invLabel.setBounds(730, 340, 230, 360); 
+        invLabel.setBounds(730, 340, 230, 360);
         invLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
         frame.add(invLabel);
+
+        ipt = new JLabel("Input : ");
+        ipt.setLayout(null);
+        ipt.setBounds(50, 715, 150, 35);
+        ipt.setFont(new Font("Comic Sans MS", Font.PLAIN, 28));
+        frame.add(ipt);
 
         imageBackground.add(new ImageIcon("resource/rsz_coop.jpg"));
         imageBackground.add(new ImageIcon("resource/rsz_coopgrass.jpg"));
@@ -122,7 +119,7 @@ public class GameMain extends JFrame implements ActionListener {
         printPeta();
         frame.revalidate();
         frame.repaint();
-        
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -136,7 +133,7 @@ public class GameMain extends JFrame implements ActionListener {
 
         view.frame.setLocationRelativeTo(null);
         view.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        view.frame.setVisible(true);   
+        view.frame.setVisible(true);
     }
 
     public void printPeta() {
@@ -147,7 +144,7 @@ public class GameMain extends JFrame implements ActionListener {
         ArrayList<FarmAnimal> ListFarmAnimal = g.getListFarmAnimal();
         Player p = g.getPlayer();
         int s = dummyFarmAnimal.size();
-        for (int i = 0; i < s ; i++) {
+        for (int i = 0; i < s; i++) {
             frame.remove(dummyFarmAnimal.get(0));
             dummyFarmAnimal.remove(dummyFarmAnimal.get(0));
         }
@@ -258,21 +255,35 @@ public class GameMain extends JFrame implements ActionListener {
         }
         ketMoney.setText("  Money : " + Integer.toString(p.getMoney()));
         ketWadahAir.setText("  Wadah Air : " + Integer.toString(p.getWadahAir()));
-        if (p.getTas().isEmpty()){
+        if (p.getTas().isEmpty()) {
             invLabel.setText("Inventory Kosong !");
-        }else{
+        } else {
             StringBuilder isi = new StringBuilder();
-            for (int i = 0;i<p.getTas().size();i++){
-                isi.append(p.getTas().get(i).getClass().getSimpleName()+", ");
+            for (int i = 0; i < p.getTas().size(); i++) {
+                isi.append(p.getTas().get(i).getClass().getSimpleName() + ", ");
             }
-            invLabel.setText("<html>Inventory : </br>"+isi.toString()+"</html>");
+            invLabel.setText("<html>Inventory : </br>" + isi.toString() + "</html>");
         }
         first = false;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        g.play(this.input.getText());
-        printPeta();
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER){
+            g.play(this.input.getText());
+            printPeta();   
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER){
+            input.setText(null); 
+        }
     }
 }
