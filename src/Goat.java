@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Goat extends FarmAnimal implements EggProducingFarmAnimal, MeatProducingFarmAnimal{
+class Goat extends FarmAnimal implements MeatProducingFarmAnimal{
 	public Goat(int x,int y){
 		super(x,y,10);
 	}

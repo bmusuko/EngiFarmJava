@@ -1,0 +1,22 @@
+0 coop
+1 coop(grass)
+2 barn
+3 barn(grass)
+4 grassland 
+5 grassland (grass)
+6 Truck
+7 Well
+8 Mixer
+9 buffalo
+10 buffalo hungry
+11 chicken
+12 chicken hungry
+13 cow
+14 cow hungry
+15 duck
+16 duck hungry
+17 goat
+18 goat hungry
+19 sheep 
+20 sheep hungry
+21 player

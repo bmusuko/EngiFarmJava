@@ -12,6 +12,7 @@ abstract class FarmAnimal{
 		this.x = x;
 		this.y = y;
 		this.lapar = lapar;
+		this.laparMax = lapar;
 	}
 	public abstract void suara();
 	public void move(int x,int y){

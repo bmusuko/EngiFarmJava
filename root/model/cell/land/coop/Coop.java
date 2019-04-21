@@ -9,9 +9,9 @@ public class Coop extends Land {
 
     public char displaySymbol() {
         if (isGrassExist) {
-            return 'o';
-        } else {
             return '#';
+        } else {
+            return 'o';
         }
     }
 }

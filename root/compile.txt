@@ -1,0 +1,2 @@
+javac view\GameMain.java
+java view.GameMain

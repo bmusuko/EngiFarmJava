@@ -1,0 +1,19 @@
+Grassland display grass not exist
+Grassland display grass exist
+true
+
+Coop display grass not exist
+Coop display grass exist
+true
+
+Barn display grass not exist
+Barn display grass exist
+true
+
+Land getisGrassExist method test
+Land getisObjectExist method test
+true
+
+Cell getXTest
+Cell getYTest
+true

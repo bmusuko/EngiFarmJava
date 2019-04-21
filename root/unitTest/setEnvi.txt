@@ -1,1 +1,14 @@
+set environment:
 Set CLASSPATH=%CLASSPATH%;%JUNIT_HOME%\junit-4.10.jar
+
+CellTestRunner.java command:
+javac unitTest\cell\GrasslandTest.java unitTest\cell\CoopTest.java unitTest\cell\BarnTest.java unitTest\cell\LandTest.java unitTest\cell\CellTest.java unitTest\cell\CellTestRunner.java
+java unitTest.cell.CellTestRunner
+
+FacilityTestRunner.java command:
+javac unitTest\facility\MixerTest.java unitTest\facility\TruckTest.java unitTest\facility\WellTest.java unitTest\facility\FacilityTestRunner.java
+java unitTest.facility.FacilityTestRunner
+
+FarmAnimalTestRunner.java command:
+javac unitTest\farmAnimal\BuffaloTest.java unitTest\farmAnimal\ChickenTest.java unitTest\farmAnimal\CowTest.java unitTest\farmAnimal\DuckTest.java unitTest\farmAnimal\GoatTest.java unitTest\farmAnimal\SheepTest.java unitTest\farmAnimal\FarmAnimalTestRunner.java
+java unitTest.farmAnimal.FarmAnimalTestRunner

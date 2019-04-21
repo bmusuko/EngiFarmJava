@@ -59,7 +59,7 @@ public class Game {
 	}
 
 	public Game() throws Exception {
-		Scanner reader = new Scanner(new File("peta.txt"));
+		Scanner reader = new Scanner(new File("control/peta.txt"));
 		ListFarmAnimal = new ArrayList<FarmAnimal>();
 		n = reader.nextInt();
 		m = reader.nextInt();
@@ -98,7 +98,7 @@ public class Game {
 				}
 			}
 		}
-		Scanner read = new Scanner(new File("dll.txt"));
+		Scanner read = new Scanner(new File("control/dll.txt"));
 		char c;
 		int x, y;
 		while (read.hasNextLine()) {

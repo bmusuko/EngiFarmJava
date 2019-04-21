@@ -1,0 +1,13 @@
+Mixer createBeefRolade Test
+Mixer deleteNeededInvent Test
+Mixer createCheese Test
+Mixer isInventAvailable Test
+Mixer createMartabak Test
+true
+
+Truck use Test
+true
+
+Well use Test
+Wadah air anda sudah terisi penuh!
+true
